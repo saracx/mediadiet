@@ -1,0 +1,172 @@
+@import url("https://use.typekit.net/nyf7ylr.css");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --main-bg-color: white;
+    --header-font: itc-avant-garde-gothic-pro, sans-serif;
+    --subtitle-font: itc-avant-garde-gothic-pro, sans-serif;
+    --main-text-color: #111;
+    --main-font: ibm-plex-mono, sans-serif;
+    --main-font-size: 0.8rem;
+    --small: 0.7rem;
+    --highlight-text-color: #fe4747;
+    --link-color: #5a78ff;
+    --meta-font: ibm-plex-mono, sans-serif;
+    --grey: #666;
+    --highlight-color: #fec1ee;
+    --button-color: #666;
+    --border-color: #e5e5e5;
+    --purple: #694dff;
+    --border-radius: 24px;
+    --box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 10%);
+}
+
+/* //=== BASIC STYLING === // */
+
+.important-note {
+    color: var(--purple);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+a {
+    font-size: 0.8rem;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover,
+a:focus {
+    transition: 0.5s;
+    color: var(--highlight-text-color);
+}
+a:hover {
+    outline: none;
+}
+a:focus {
+    outline: var(--highlight-text-color);
+}
+
+.error {
+    color: var(--highlight-text-color);
+    margin: 1rem 0;
+    text-align: center;
+    transition: 1s;
+}
+
+button,
+input,
+.file-upload {
+    transition: 0.5s;
+    margin: 0.1rem auto;
+    width: 120px;
+    height: 36px;
+    text-align: center;
+    outline: none;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-family: var(--main-font);
+    color: var(--highlight-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+button:hover,
+.file-upload:hover {
+    color: var(--purple);
+    transition: 0.5s;
+    border-color: var(--purple);
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0px 0px;
+    background-color: transparent;
+}
+
+button:focus,
+input:focus {
+    border: 1px solid var(--purple);
+    color: var(--purple);
+}
+
+h2,
+h3 {
+    margin: 1rem auto;
+    font-style: italic;
+    font-family: var(--header-font);
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    color: var(--highlight-text-color);
+}
+
+body {
+    background-color: var(--main-bg-color);
+    margin: 0rem auto;
+    color: var(--main-text-color);
+    font-family: var(--main-font);
+    font-size: var(--main-font-size);
+    width: 80vw;
+}
+
+#app,
+#registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    min-height: 80vh;
+}
+
+/* Registration  */
+
+.logo {
+    width: 250px;
+    margin: 2rem 0 2rem 0;
+    transform: rotate(-2deg);
+    /* height: 100px; */
+}
+
+.intro {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#signup-form {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+label,
+.signup-button {
+    margin: 0 1rem;
+}
+
+.registration-links {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.registration-links a {
+    font-size: var(--small);
+}
