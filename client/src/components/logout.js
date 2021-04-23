@@ -2,6 +2,7 @@ import React from "react";
 import axios from "../axios";
 // import { withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "../css/logout.css";
 
 export default function Logout() {
     const [error, setError] = useState(false);
@@ -20,9 +21,11 @@ export default function Logout() {
     };
 
     return (
-        <button className="logout" onClick={() => handleClick()}>
-            Logout
-        </button>
+        <section id="logout">
+            <button className="logout" onClick={() => handleClick()}>
+                Logout
+            </button>
+        </section>
     );
 }
 

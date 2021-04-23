@@ -1,0 +1,11 @@
+#logout {
+    position: fixed;
+    padding: 0 2rem;
+    bottom: 10px;
+    right: 0;
+    width: 25%;
+}
+
+.logout {
+    color: #aaa;
+}

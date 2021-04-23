@@ -16,3 +16,48 @@ module.exports.loginUser = function (email) {
     return db.query(query, params);
 };
 //
+
+// Reset Code & Password Change
+
+module.exports.addResetCode = function (email, code) {
+    const query = `INSERT INTO reset (email, code) VALUES ($1, $2) RETURNING created_at`;
+    const params = [email, code];
+    return db.query(query, params);
+};
+
+module.exports.getResetCode = (email) => {
+    const params = [email];
+    const query = `
+    SELECT * FROM reset
+    WHERE CURRENT_TIMESTAMP - created_at < INTERVAL '10 minutes' AND email = $1
+    ORDER BY created_at DESC
+    LIMIT 1;
+    `;
+    return db.query(query, params);
+};
+
+module.exports.changePassword = (password, email) => {
+    const params = [password, email];
+    const query = `
+    UPDATE users
+    SET password = $1
+    WHERE email = $2;`;
+    return db.query(query, params);
+};
+
+module.exports.userInfo = (id) => {
+    const params = [id];
+    const query = `
+    SELECT id, first, last, profile_img, bio, city, twitter FROM users
+    WHERE id = $1;`;
+    return db.query(query, params);
+};
+
+module.exports.addProfilePicture = function (url, id) {
+    const query = `UPDATE users
+    SET profile_pic = $1
+    WHERE id = $2
+    RETURNING id, profile_pic;`;
+    const params = [url, id];
+    return db.query(query, params);
+};
