@@ -2,19 +2,21 @@ import axios from "../axios";
 import { BrowserRouter, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import Logout from "./logout";
 
 export default function App() {
-    useEffect(() => {
-        axios
-            .get("/api/user")
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-                this.setState({ error: "Something went wrong!" });
-            });
-    }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get("/api/user")
+    //         .then((res) => {
+    //             console.log(res);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //             this.setState({ error: "Something went wrong!" });
+    //         });
+    // }, []);
+
     return (
         <div id="app">
             <h2>You are logged in!</h2>
@@ -26,6 +28,7 @@ export default function App() {
                     <li>View of all the lists </li>
                 </ul>
             </BrowserRouter>
+            <Logout></Logout>
         </div>
     );
 }
