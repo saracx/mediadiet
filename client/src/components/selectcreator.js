@@ -8,12 +8,13 @@ import Selector from "./selectors";
 
 export default function Selectcreator() {
     const [playlistStatus, setPlaylistStatus] = useState();
-    const [input, setInput] = useState({});
     const [error, setError] = useState(false);
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
+    const items = useSelector((state) => state && state.items);
+    console.log("items in selectcreator", items);
 
-    console.log("playlist in select", playlist);
+    // console.log("playlist in select", playlist);
 
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());
@@ -22,25 +23,6 @@ export default function Selectcreator() {
     if (!playlist) {
         return null;
     }
-
-    // const handleChange = (e) => {
-    //     e.preventDefault();
-    //     setInput((prevState) => ({
-    //         ...prevState,
-    //         [e.target.name]: e.target.value,
-    //     }));
-    //     setError(false);
-    // };
-
-    // const handleClick = (e) => {
-    //     if (!input || !input.title || !input.description) {
-    //         return setError("Please fill out all required fields");
-    //     }
-    //     e.preventDefault();
-    //     dispatch(addPlaylist(input));
-    //     setError(false);
-    //     location.replace("/select");
-    // };
 
     return (
         <section id="playlist-selector">
@@ -54,29 +36,15 @@ export default function Selectcreator() {
             <Selector></Selector>
             <Selector></Selector>
             <button className="add-more">Add more items</button>
+
+            <div>
+                {items &&
+                    items.map((item, i) => {
+                        console.log("item in selectcreator", item);
+                        return <img key={item.i} src={item.image}></img>;
+                    })}
+            </div>
             <button className="finish-button">Finish</button>
         </section>
     );
 }
-
-//  <section className="select-form">
-//                 <input
-//                     onChange={(e) => handleChange(e)}
-//                     className="required"
-//                     name="title"
-//                     placeholder="title"
-//                 ></input>
-//                 <h3 className="labels">Description*</h3>
-//                 <textarea
-//                     onChange={(e) => handleChange(e)}
-//                     className="description-selection"
-//                     name="description"
-//                     placeholder="description"
-//                 ></textarea>
-//                 {error && <p className="error">{error}</p>}
-//             </section>
-//             <Link to="/select">
-//                 <button onClick={(e) => handleClick(e)} className="required">
-//                     Add more
-//                 </button>
-//             </Link>

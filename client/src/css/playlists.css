@@ -89,3 +89,40 @@ h3 {
     transform: translateX(-50%);
     width: 100px;
 }
+
+.search-list {
+    position: relative;
+    width: 200px;
+}
+.search-list > input {
+    width: 200px;
+}
+
+.search-list ul {
+    position: absolute;
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
+}
+
+.search-list li {
+    display: flex;
+    align-items: flex-start;
+    width: 200px;
+    z-index: 200;
+    margin: 0.4rem auto;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.search-list li:hover {
+    background-color: var(--highlight-color);
+}
+
+.small {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    margin: 0 1rem;
+}

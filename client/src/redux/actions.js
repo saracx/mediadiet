@@ -3,7 +3,7 @@ import axios from "../axios";
 export async function receiveUser() {
     try {
         const { data } = await axios.get("/api/user");
-        console.log("data in actions", data);
+        // console.log("data in actions", data);
 
         if (data.error) {
             return {
@@ -57,4 +57,12 @@ export async function receivePlaylist() {
     } catch (err) {
         console.log("error in Create Playlist action", err);
     }
+}
+
+export async function receivePlaylistDraft(item) {
+    console.log("item in action", item);
+    return {
+        type: "ADD_ITEM",
+        items: item,
+    };
 }
