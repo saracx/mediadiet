@@ -20,3 +20,41 @@ export async function receiveUser() {
         console.log("error in addUser action", err);
     }
 }
+
+export async function addPlaylist(input) {
+    try {
+        const { data } = await axios.post("/api/playlist", input);
+
+        if (data.error) {
+            return {
+                type: "ERROR_MESSAGE",
+                error: data.error,
+            };
+        }
+        return {
+            type: "CREATE_PLAYLIST",
+            playlist: data.playlist,
+        };
+    } catch (err) {
+        console.log("error in Create Playlist action", err);
+    }
+}
+
+export async function receivePlaylist() {
+    try {
+        const { data } = await axios.get("/api/playlist");
+
+        if (data.error) {
+            return {
+                type: "ERROR_MESSAGE",
+                error: data.error,
+            };
+        }
+        return {
+            type: "CREATE_PLAYLIST",
+            playlist: data.playlist,
+        };
+    } catch (err) {
+        console.log("error in Create Playlist action", err);
+    }
+}

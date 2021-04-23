@@ -51,7 +51,7 @@ const getUser = async (req, res) => {
 //     }
 // };
 
-router.get("/user", requireLoggedInUser, getUser);
+router.get("/", requireLoggedInUser, getUser);
 // router.get("/users/", requireLoggedInUser, findUsers);
 // router.get("/users/:name", requireLoggedInUser, searchUsers);
 

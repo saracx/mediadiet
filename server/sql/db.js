@@ -61,3 +61,18 @@ module.exports.addProfilePicture = function (url, id) {
     const params = [url, id];
     return db.query(query, params);
 };
+
+module.exports.addMixtape = function (title, desc, id) {
+    const query = `
+    INSERT INTO mixtapes
+    (title, description, user_id) VALUES ($1, $2, $3) RETURNING *`;
+    const params = [title, desc, id];
+    return db.query(query, params);
+};
+
+module.exports.getLastMixtapeDraft = function (id) {
+    const query = `SELECT * FROM mixtapes
+    WHERE user_id = $1 AND draft = true ORDER BY id DESC LIMIT 1;`;
+    const params = [id];
+    return db.query(query, params);
+};

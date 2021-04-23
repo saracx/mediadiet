@@ -36,6 +36,7 @@ CREATE TABLE mixtapes(
     title VARCHAR(255) NOT NULL,
     description VARCHAR,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    draft BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

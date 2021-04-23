@@ -7,6 +7,7 @@ import { receiveUser } from "../redux/actions";
 import Landingscreen from "./landingscreen";
 import Navigation from "./navigation";
 import Logo from "./logo";
+import Playlisteditor from "./playlist_editor";
 
 export default function App() {
     const dispatch = useDispatch();
@@ -29,11 +30,10 @@ export default function App() {
                 </nav>
                 <div id="main">
                     <Route exact path="/" render={() => <Landingscreen />} />
-
-                    <ul>
-                        <li>Creation Component</li>
-                        <li>View of all the lists </li>
-                    </ul>
+                    <Route
+                        path="/create-playlist"
+                        render={() => <Playlisteditor />}
+                    />
                 </div>
             </BrowserRouter>
             <Logout></Logout>

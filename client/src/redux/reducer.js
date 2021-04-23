@@ -15,5 +15,13 @@ export default function (state = {}, action) {
         };
     }
 
+    if (action.type == "CREATE_PLAYLIST") {
+        console.log("playlist in create playlist", action.playlist);
+        state = {
+            ...state,
+            playlist: action.playlist,
+        };
+    }
+
     return state;
 }

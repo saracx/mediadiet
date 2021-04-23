@@ -1,0 +1,91 @@
+/* Playlist Editor */
+
+#playlist-editor {
+    margin-top: 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+.labels {
+    color: var(--main-text-color);
+    font-size: 0.8rem;
+    margin: 0 1rem;
+}
+
+.forms > .required {
+    margin: 0.5rem auto;
+    width: 230px;
+    text-align: left;
+}
+
+li {
+    margin: 0.8rem;
+}
+
+textarea {
+    height: 100px;
+    width: 200px;
+    text-align: left;
+    white-space: normal;
+    resize: none;
+    line-height: normal;
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid rgba(90, 120, 255, 1);
+}
+
+h3 {
+    color: var(--main-text-color);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.select-form {
+    display: flex;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+.select-form > input {
+    width: 200px;
+}
+
+.description-selection {
+    height: 2rem;
+    width: 100%;
+}
+
+.select-form-buttons {
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+}
+
+#playlist-selector {
+    /* margin-top: 1rem; */
+    /* border: 1px solid black; */
+    height: 40vw;
+}
+
+.finish-button {
+    color: var(--link-hover-color);
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+}

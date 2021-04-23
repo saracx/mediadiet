@@ -1,16 +1,34 @@
 /* eslint-disable indent */
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { receiveBooks, addNewBook } from "./actions";
+import "../css/playlists.css";
+import { addPlaylist } from "../redux/actions";
+import Startcreator from "./startcreator";
+import Selectcreator from "./selectcreator";
+import { HashRouter, Route } from "react-router-dom";
 
-export default function Library() {
-    const dispatch = useDispatch();
-    const [query, setQuery] = useState("");
-    let bookEmoji = "assets/book_emoji.png";
+export default function Playlisteditor() {
+    // const dispatch = useDispatch();
+    // // const playlist = useSelector((state) => state && state.playlist);
 
-    const handleChange = (e) => {
-        setQuery(e.target.value);
-    };
+    // const [input, setInput] = useState({});
+    // const [error, setError] = useState(false);
+
+    // const handleChange = (e) => {
+    //     e.preventDefault();
+    //     setInput((prevState) => ({
+    //         ...prevState,
+    //         [e.target.name]: e.target.value,
+    //     }));
+    //     setError(false);
+    // };
+
+    // const handleClick = (e) => {
+    //     e.preventDefault();
+    //     dispatch(addPlaylist(input));
+    //     // then go on to next part of the form
+    //     setError(false);
+    // };
 
     // useEffect(() => {
     //     let abort;
@@ -50,14 +68,12 @@ export default function Library() {
 
     return (
         <div id="playlist-editor">
-            <section id="find-people">
-                <h2 className="subtitle">Add a book to your library</h2>
-                <input
-                    onChange={handleChange}
-                    className="search-input"
-                    name="search"
-                ></input>
-            </section>
+            <h2>Create a playlist</h2>
+            <HashRouter>
+                <Route exact path="/" component={Startcreator} />
+                <Route path="/select" component={Selectcreator} />
+                {/* <Route path="/finish" component={Finishcreator} /> */}
+            </HashRouter>
         </div>
     );
 }

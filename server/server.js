@@ -17,6 +17,7 @@ const login = require("./routes/login");
 // const password = require("./routes/pwreset");
 const welcome = require("./routes/welcome");
 const userRouter = require("./routes/user");
+const playlistRouter = require("./routes/playlist");
 // const upload = require("./routes/upload");
 // const bio = require("./routes/bio");
 // const otherUser = require("./routes/getotherusers.js");
@@ -57,7 +58,7 @@ app.use(
 
 // // ===== ROUTES ==== //
 
-app.use("/signup", requireLoggedOutUser, register);
+app.use("/signup", register);
 // app.use("/delete", deleteUser);
 app.use("/login", login);
 // app.use("/password/reset", password);
@@ -65,7 +66,8 @@ app.use("/welcome", welcome);
 // app.use("/upload", upload);
 // app.use("/bio", bio);
 // app.use(otherUser);
-app.use("/api", userRouter);
+app.use("/api/user", userRouter);
+app.use("/api/playlist", playlistRouter);
 // app.use("/relationship", relationRouter);
 // app.use("/images", imageRouter);
 // app.use("/library", libraryRouter);
