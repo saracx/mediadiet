@@ -77,9 +77,15 @@ module.exports.getLastMixtapeDraft = function (id) {
     return db.query(query, params);
 };
 
-module.exports.addItems = function (title, type, id, image, url, year, author) {
+module.exports.addItems = function (type, title, id, image, url, year, author) {
     const query = `INSERT INTO items
-    (title, type, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
-    const params = [title, type, id, image, url, year, author];
+    (type, title, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+    const params = [type, title, id, image, url, year, author];
+    return db.query(query, params);
+};
+
+module.exports.getThisPlaylist = function (id) {
+    const query = `SELECT * FROM items WHERE mixtape_id = $1;`;
+    const params = [id];
     return db.query(query, params);
 };

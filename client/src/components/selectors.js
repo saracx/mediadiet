@@ -9,7 +9,7 @@ import { bookRequests } from "../requests/books";
 export default function Selector() {
     const noImage = "/no-results.png";
     const dispatch = useDispatch();
-    // const items = useSelector((state) => state && state.items);
+    const playlist = useSelector((state) => state && state.playlist);
     const [option, setOption] = useState("");
     const [error, setError] = useState({});
     const [query, setQuery] = useState("");

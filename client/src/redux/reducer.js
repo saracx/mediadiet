@@ -25,7 +25,6 @@ export default function (state = {}, action) {
     }
 
     if (action.type == "ADD_ITEM") {
-        // console.log("added item", action.items);
         state = {
             ...state,
             items: [...state.items, action.items],
@@ -33,7 +32,6 @@ export default function (state = {}, action) {
     }
 
     if (action.type == "DELETE_ITEM") {
-        console.log("at delete item reducer", action.item);
         state = {
             ...state,
             items: state.items.filter((item) => item !== action.item),

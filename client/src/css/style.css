@@ -61,10 +61,10 @@ a:focus {
 .error {
     color: var(--error-color);
     margin: 1rem 2rem 2rem 0;
-    text-align: left;
+    text-align: center;
     transition: 1s;
-    width: 250px;
     font-size: var(--small);
+    width: 100%;
 }
 
 p {
@@ -132,6 +132,12 @@ body {
     font-family: var(--main-font);
     font-size: var(--main-font-size);
     width: 80vw;
+}
+
+.highlight {
+    background-color: var(--highlight-color);
+    color: var(--main-text-color);
+    font-style: italic;
 }
 
 #app,

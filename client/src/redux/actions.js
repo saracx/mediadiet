@@ -73,3 +73,10 @@ export async function deleteItem(item) {
         item,
     };
 }
+
+// export async function receiveItems() {
+//     // axios request to get all items from database and store in state
+// //     return {
+// //         type: "GET_ITEMS",
+// //     };
+// }

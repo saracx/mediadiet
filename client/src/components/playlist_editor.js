@@ -11,7 +11,6 @@ import { HashRouter, Route } from "react-router-dom";
 export default function Playlisteditor() {
     return (
         <div id="playlist-editor">
-            <h2>Create your playlist</h2>
             <HashRouter>
                 <Route exact path="/" component={Startcreator} />
                 <Route path="/select" component={Selectcreator} />

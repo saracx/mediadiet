@@ -24,7 +24,12 @@ export default function Preview() {
 
     return (
         <div className="preview-wrapper">
-            {items && <h2>Preview {playlist.title}</h2>}
+            {items && (
+                <h2>
+                    Hey man, that's a cool playlist!{" "}
+                    <span className="highlight">{playlist.title}</span>
+                </h2>
+            )}
             <div className="preview">
                 <div className="single-items">
                     {items &&
@@ -32,6 +37,7 @@ export default function Preview() {
                             if (item.image.smallThumbnail) {
                                 return (
                                     <img
+                                        className="final-playlist-view"
                                         key={i}
                                         src={
                                             item.image.smallThumbnail || noImage
@@ -41,6 +47,7 @@ export default function Preview() {
                             } else {
                                 return (
                                     <img
+                                        className="final-playlist-view"
                                         key={i}
                                         src={item.image || noImage}
                                     ></img>

@@ -23,8 +23,15 @@ export default function Selectcreator() {
         !playlist && dispatch(receivePlaylist());
     }, []);
 
+    useEffect(() => {
+        window.addEventListener("beforeunload", (ev) => {
+            ev.preventDefault();
+            return (ev.returnValue = "Are you sure you want to close?");
+        });
+    });
+
     const handleClick = async () => {
-        if (items.length < 4) {
+        if (items.length <= 3) {
             setError(
                 "Sorry, you have to select at least three items for your playlist!"
             );
@@ -77,8 +84,8 @@ export default function Selectcreator() {
                 <button onClick={() => handleClick()} className="finish-button">
                     Next
                 </button>
+                <Preview></Preview>
             </div>
-            <Preview></Preview>
         </section>
     );
 }

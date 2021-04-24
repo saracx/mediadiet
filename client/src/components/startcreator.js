@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function Startcreator() {
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
-    console.log(playlist);
+    // const [cookies, setCookie] = useCookies();
 
     const [input, setInput] = useState({});
     const [error, setError] = useState(false);
@@ -28,10 +28,14 @@ export default function Startcreator() {
         }
         dispatch(addPlaylist(input));
         setError(false);
+        // setCookie("mixtape", true, {
+        //     path: "/",
+        // });
     };
 
     return (
         <section id="intro">
+            <h2>Create your playlist</h2>
             <p>
                 This is where the magic happens: you can decide what ends up on
                 your mixed-media playlist, if it has a common theme or idea or

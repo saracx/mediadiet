@@ -11,6 +11,11 @@ export default function Navigation() {
                         Welcome
                     </Link>{" "}
                 </li>
+                <li>
+                    <Link className="" to={"/create-playlist#"}>
+                        Create Mixtape
+                    </Link>{" "}
+                </li>
             </ul>
         </section>
     );

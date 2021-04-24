@@ -16,12 +16,17 @@ const postLogin = async (req, res) => {
             });
         } else {
             const { password } = results.rows[0];
+
             const match = await compare(req.body.password, password);
 
             if (match) {
                 const { id, first } = results.rows[0];
+
                 req.session.userId = id;
                 req.session.first = first;
+
+                console.log("Req session id:", req.session.userId);
+
                 res.json({
                     success: true,
                     userId: id,

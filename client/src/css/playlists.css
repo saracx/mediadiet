@@ -77,7 +77,7 @@ h3 {
 
 #playlist-selector {
     /* margin-top: 1rem; */
-    border: 1px solid black;
+
     /* height: 40vw; */
     width: 100%;
     justify-content: center;
@@ -169,8 +169,9 @@ select {
 
 .single-items > img {
     margin: 0.5rem;
-    width: 50px;
-    height: auto;
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
 }
 
 li {
