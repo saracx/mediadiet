@@ -6,6 +6,7 @@ import { receivePlaylist } from "../redux/actions";
 import { Link } from "react-router-dom";
 import Selector from "./selectors";
 import axios from "../axios";
+import Preview from "./preview";
 
 export default function Selectcreator() {
     const noImage = "/no-results.png";
@@ -23,6 +24,12 @@ export default function Selectcreator() {
     }, []);
 
     const handleClick = async () => {
+        if (items.length < 4) {
+            setError(
+                "Sorry, you have to select at least three items for your playlist!"
+            );
+        }
+
         let { id } = playlist;
         const { data } = await axios.post("/api/playlist/items", { id, items });
         if (data.success) {
@@ -57,7 +64,7 @@ export default function Selectcreator() {
             <Selector key="2"></Selector>
             <Selector key="3"></Selector>
             {children}
-            {error && <p>{error}</p>}
+            {error && <p className="error">{error}</p>}
             <div className="button-wrapper">
                 {displayButton && (
                     <button
@@ -71,34 +78,7 @@ export default function Selectcreator() {
                     Next
                 </button>
             </div>
-            <div className="preview-wrapper">
-                {items && <h2>Preview {playlist.title}</h2>}
-                <div className="preview">
-                    <div className="single-items">
-                        {items &&
-                            items.map((item, i) => {
-                                if (item.image.smallThumbnail) {
-                                    return (
-                                        <img
-                                            key={i}
-                                            src={
-                                                item.image.smallThumbnail ||
-                                                noImage
-                                            }
-                                        ></img>
-                                    );
-                                } else {
-                                    return (
-                                        <img
-                                            key={i}
-                                            src={item.image || noImage}
-                                        ></img>
-                                    );
-                                }
-                            })}
-                    </div>
-                </div>
-            </div>
+            <Preview></Preview>
         </section>
     );
 }

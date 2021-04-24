@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addNewItem } from "../redux/actions";
+import { addNewItem, deleteItem } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUp } from "../utils";
 
@@ -14,13 +14,12 @@ export default function Selector() {
     const [error, setError] = useState({});
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
-    const [selectedItems, setSelectedItems] = useState([]);
-    // console.log("this should be a new playlist with the new item", items);
+    const [selectedItem, setSelectedItem] = useState();
+    const [garbage, setGarbage] = useState(false);
 
     const handleChange = (e, task) => {
         if (task == "selection") {
             setOption(e.target.value);
-            // setOption(e.currentTarget.value);
             setError(false);
         }
         if (task == "search") {
@@ -46,32 +45,69 @@ export default function Selector() {
     }, [query]);
 
     const selectItem = (item) => {
+        // clean up selected item object before sending it to local and global state
+        let cleanedItem = cleanUp(item);
+        // console.log("cleaned Item", cleanedItem);
+        dispatch(addNewItem(cleanedItem));
+        setSelectedItem(cleanedItem);
         setQuery(null); // close results window
+        setGarbage(true);
+        setOption("");
+    };
 
-        dispatch(addNewItem(cleanUp(item))); // after choosing a product, the results will be cleaned up and dispatched to state
+    const handleDeleteItem = () => {
+        setQuery(null);
+        setGarbage(false);
+        dispatch(deleteItem(selectedItem)).then(() => {
+            setSelectedItem(null);
+            setOption(true);
+        });
     };
 
     return (
         <div className="select-form">
-            <select
-                onChange={(e) => handleChange(e, "selection")}
-                placeholder="Make a selection"
-                defaultValue="1"
-            >
-                <option value="1" disabled>
-                    Choose here
-                </option>
+            {!garbage && !selectedItem ? (
+                <select
+                    onChange={(e) => handleChange(e, "selection")}
+                    placeholder="Make a selection"
+                    defaultValue="1"
+                >
+                    <option value="1" disabled>
+                        Choose media
+                    </option>
 
-                <option>books</option>
-                <option>movies</option>
-            </select>
+                    <option>books</option>
+                    <option>movies</option>
+                </select>
+            ) : (
+                <p>{selectedItem.title.substring(0, 20)}</p>
+            )}
+
             <div className="search-list">
                 {option && (
                     <input
                         onChange={(e) => handleChange(e, "search")}
-                        placeholder="Search"
+                        placeholder={
+                            selectedItem && query
+                                ? selectedItem[0].title
+                                : "Search"
+                        }
                     ></input>
                 )}
+                {garbage && selectedItem ? (
+                    <>
+                        <img
+                            className="preview-image"
+                            src={
+                                selectedItem.image.smallThumbnail ||
+                                selectedItem.image
+                            }
+                        ></img>
+                    </>
+                ) : (
+                    ""
+                )}
+
                 <ul>
                     {results && query
                         ? results.map((item, i) => {
@@ -99,17 +135,13 @@ export default function Selector() {
                         : ""}
                 </ul>
             </div>
+            {garbage && selectedItem ? (
+                <p onClick={() => handleDeleteItem()} className="garbage">
+                    🚮
+                </p>
+            ) : (
+                <p>🚨</p>
+            )}
         </div>
     );
-}
-
-{
-    // <b>{item.volumeInfo.authors}</b>;
-    /* <img
-    src={
-        item.volumeInfo.imageLinks
-            ? item.volumeInfo.imageLinks.smallThumbnail
-            : bookEmoji
-    }
-></img>; */
 }

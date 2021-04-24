@@ -42,11 +42,8 @@ export default function Startcreator() {
             <ul>
                 <li>Minimum items on playlists: 3</li>
                 <li>Maximum items on playlists: 10</li>
-                <li>
-                    You have to write a short description why you chose those
-                    items for your playlist
-                </li>
-                <li>Title & description are necessary!</li>
+
+                <li>Title & description are required!</li>
             </ul>
             <section className="forms">
                 <h3 onChange={(e) => handleChange(e)} className="labels">
@@ -56,14 +53,16 @@ export default function Startcreator() {
                     onChange={(e) => handleChange(e)}
                     className="required"
                     name="title"
-                    placeholder="title"
+                    placeholder={playlist ? playlist.title : "Your title here"}
                 ></input>
                 <h3 className="labels">Description*</h3>
                 <textarea
                     onChange={(e) => handleChange(e)}
                     className="required"
                     name="description"
-                    placeholder="description"
+                    placeholder={
+                        playlist ? playlist.title : "Your description here"
+                    }
                 ></textarea>
                 {error && <p className="error">{error}</p>}
                 <Link to="/select">

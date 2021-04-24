@@ -25,6 +25,7 @@
     --box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 10%);
     --link-hover-color: rgba(90, 120, 255, 1);
     --meta-color: #666;
+    --error-color: #fe4747;
 }
 
 /* //=== BASIC STYLING === // */
@@ -58,10 +59,12 @@ a:focus {
 }
 
 .error {
-    color: var(--highlight-text-color);
-    margin: 1rem 0;
-    text-align: center;
+    color: var(--error-color);
+    margin: 1rem 2rem 2rem 0;
+    text-align: left;
     transition: 1s;
+    width: 250px;
+    font-size: var(--small);
 }
 
 p {

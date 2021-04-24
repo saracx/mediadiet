@@ -65,3 +65,11 @@ export async function addNewItem(item) {
         items: item,
     };
 }
+
+export async function deleteItem(item) {
+    console.log(item);
+    return {
+        type: "DELETE_ITEM",
+        item,
+    };
+}
