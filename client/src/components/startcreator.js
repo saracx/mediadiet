@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 
 export default function Startcreator() {
     const dispatch = useDispatch();
-    // const playlist = useSelector((state) => state && state.playlist);
+    const playlist = useSelector((state) => state && state.playlist);
+    console.log(playlist);
 
     const [input, setInput] = useState({});
     const [error, setError] = useState(false);

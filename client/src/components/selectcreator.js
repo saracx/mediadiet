@@ -5,10 +5,10 @@ import "../css/playlists.css";
 import { receivePlaylist } from "../redux/actions";
 import { Link } from "react-router-dom";
 import Selector from "./selectors";
+import axios from "../axios";
 
 export default function Selectcreator() {
     const noImage = "/no-results.png";
-    const [playlistStatus, setPlaylistStatus] = useState();
     const [error, setError] = useState(false);
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
@@ -16,11 +16,19 @@ export default function Selectcreator() {
     let [children, setChildren] = useState([]);
     let [displayButton, setDisplayButton] = useState(true);
 
-    // console.log("playlist in select", playlist);
+    console.log("playlist in select", playlist);
 
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());
-    }, [playlistStatus]);
+    }, []);
+
+    const handleClick = async () => {
+        let { id } = playlist;
+        const { data } = await axios.post("/api/playlist/items", { id, items });
+        if (data.success) {
+            location.replace("/create-playlist#/finish");
+        }
+    };
 
     if (!playlist) {
         return null;
@@ -35,8 +43,6 @@ export default function Selectcreator() {
             setError("Sorry, you've reached the maximum number of items!");
             setDisplayButton(false);
         }
-        console.log("numchildren", numChildren);
-        console.log(children);
     };
 
     return (
@@ -61,15 +67,17 @@ export default function Selectcreator() {
                         Add more items
                     </button>
                 )}
-                <button className="finish-button">Next</button>
+                <button onClick={() => handleClick()} className="finish-button">
+                    Next
+                </button>
             </div>
             <div className="preview-wrapper">
-                <h2>Preview {playlist.title}</h2>
+                {items && <h2>Preview {playlist.title}</h2>}
                 <div className="preview">
                     <div className="single-items">
                         {items &&
                             items.map((item, i) => {
-                                if (item.image) {
+                                if (item.image.smallThumbnail) {
                                     return (
                                         <img
                                             key={i}
@@ -83,7 +91,7 @@ export default function Selectcreator() {
                                     return (
                                         <img
                                             key={i}
-                                            src={item.Poster || noImage}
+                                            src={item.image || noImage}
                                         ></img>
                                     );
                                 }

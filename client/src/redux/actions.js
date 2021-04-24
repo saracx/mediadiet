@@ -59,8 +59,7 @@ export async function receivePlaylist() {
     }
 }
 
-export async function receivePlaylistDraft(item) {
-    console.log("item in action", item);
+export async function addNewItem(item) {
     return {
         type: "ADD_ITEM",
         items: item,

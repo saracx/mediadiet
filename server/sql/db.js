@@ -76,3 +76,10 @@ module.exports.getLastMixtapeDraft = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+module.exports.addItems = function (title, type, id, image, url, year, author) {
+    const query = `INSERT INTO items
+    (title, type, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+    const params = [title, type, id, image, url, year, author];
+    return db.query(query, params);
+};

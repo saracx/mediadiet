@@ -13,7 +13,15 @@ export function cleanUp(item) {
 
         return cleanedUpItem;
     } else {
-        console.log("returning movie item unclean");
-        return item;
+        const { Title, Year, imdbID, Poster } = item;
+
+        let cleanedUpItem = {
+            type: "movie",
+            title: Title,
+            url: imdbID,
+            year: Year,
+            image: Poster,
+        };
+        return cleanedUpItem;
     }
 }

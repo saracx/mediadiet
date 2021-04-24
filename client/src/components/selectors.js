@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { receivePlaylistDraft } from "../redux/actions";
+import { addNewItem } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUp } from "../utils";
 
@@ -46,10 +46,9 @@ export default function Selector() {
     }, [query]);
 
     const selectItem = (item) => {
-        console.log("item in selectItem", item);
-        setQuery(null);
+        setQuery(null); // close results window
 
-        dispatch(receivePlaylistDraft(cleanUp(item)));
+        dispatch(addNewItem(cleanUp(item))); // after choosing a product, the results will be cleaned up and dispatched to state
     };
 
     return (

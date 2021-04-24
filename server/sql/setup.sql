@@ -40,25 +40,15 @@ CREATE TABLE mixtapes(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE movies(
+CREATE TABLE items(
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    type VARCHAR,
+    title VARCHAR NOT NULL,
     description VARCHAR,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    poster VARCHAR(255),
-    imdb VARCHAR,
-    year INTEGER,
+    mixtape_id INTEGER REFERENCES mixtapes(id) ON DELETE CASCADE,
+    image VARCHAR,
+    url VARCHAR,
+    year VARCHAR,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE books(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description VARCHAR,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    poster VARCHAR(255),
-    link VARCHAR,
-    year INTEGER,
-    author VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
