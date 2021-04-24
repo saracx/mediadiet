@@ -81,15 +81,6 @@ h3 {
     height: 40vw;
 }
 
-.finish-button {
-    color: var(--link-hover-color);
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-}
-
 .search-list {
     position: relative;
     width: 200px;
@@ -125,4 +116,23 @@ h3 {
     height: 25px;
     object-fit: cover;
     margin: 0 1rem;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+select {
+    width: 150px;
+}
+
+.add-more {
+    width: 150px;
+}
+
+.finish-button {
+    color: var(--link-hover-color);
+
+    width: 150px;
 }

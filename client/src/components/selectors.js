@@ -61,7 +61,6 @@ export default function Selector() {
 
     return (
         <div className="select-form">
-            <div>Item 1*</div>
             <select
                 onChange={(e) => handleChange(e, "selection")}
                 placeholder="Make a selection"

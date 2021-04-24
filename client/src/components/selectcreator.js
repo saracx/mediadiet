@@ -12,7 +12,8 @@ export default function Selectcreator() {
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
     const items = useSelector((state) => state && state.items);
-    console.log("items in selectcreator", items);
+    let [children, setChildren] = useState([]);
+    let [displayButton, setDisplayButton] = useState(true);
 
     // console.log("playlist in select", playlist);
 
@@ -24,6 +25,19 @@ export default function Selectcreator() {
         return null;
     }
 
+    const handleAddMore = () => {
+        let numChildren = children.length;
+        if (numChildren < 7) {
+            console.log("should be pushing!");
+            setChildren([...children, <Selector key={3 + numChildren} />]);
+        } else {
+            setError("Sorry, you've reached the maximum number of items!");
+            setDisplayButton(false);
+        }
+        console.log("numchildren", numChildren);
+        console.log(children);
+    };
+
     return (
         <section id="playlist-selector">
             <h3>
@@ -32,10 +46,22 @@ export default function Selectcreator() {
                     <span className="playlist-name">{playlist.title}</span>
                 )}
             </h3>
-            <Selector></Selector>
-            <Selector></Selector>
-            <Selector></Selector>
-            <button className="add-more">Add more items</button>
+            <Selector key="1"></Selector>
+            <Selector key="2"></Selector>
+            <Selector key="3"></Selector>
+            {children}
+            {error && <p>{error}</p>}
+            <div className="button-wrapper">
+                {displayButton && (
+                    <button
+                        onClick={() => handleAddMore()}
+                        className="add-more"
+                    >
+                        Add more items
+                    </button>
+                )}
+                <button className="finish-button">Next</button>
+            </div>
 
             <div>
                 {items &&
@@ -44,7 +70,6 @@ export default function Selectcreator() {
                         return <img key={item.i} src={item.image}></img>;
                     })}
             </div>
-            <button className="finish-button">Finish</button>
         </section>
     );
 }
