@@ -61,7 +61,7 @@ h3 {
 }
 
 .select-form > input {
-    width: 200px;
+    width: 50%;
 }
 
 .description-selection {
@@ -78,7 +78,8 @@ h3 {
 #playlist-selector {
     /* margin-top: 1rem; */
     /* border: 1px solid black; */
-    height: 40vw;
+    /* height: 40vw; */
+    width: 100%;
 }
 
 .search-list {
@@ -124,15 +125,44 @@ h3 {
 }
 
 select {
-    width: 150px;
+    width: 50%;
 }
 
 .add-more {
-    width: 150px;
+    width: 50%;
 }
 
 .finish-button {
     color: var(--link-hover-color);
 
     width: 150px;
+}
+
+.single-items {
+    flex-wrap: wrap;
+}
+
+.preview-wrapper {
+    margin: 4rem 0;
+    width: 100%;
+
+    /* border: 1px solid black; */
+}
+
+.preview-wrapper > h2 {
+    flex-grow: 3;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--meta-color);
+}
+
+.preview {
+    display: flex;
+    margin: 1rem;
+}
+
+.single-items > img {
+    margin: 0.5rem;
+    width: 50px;
+    height: auto;
 }

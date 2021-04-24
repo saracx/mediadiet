@@ -1,25 +1,19 @@
 export function cleanUp(item) {
-    // console.log("arrived at cleanup, this is item", item);
-    if (item.volumeInfo) {
-        const {
-            title,
-            authors,
-            imageLinks,
-            infoLink,
-            publishedDate,
-        } = item.volumeInfo;
+    if (item.printType) {
+        const { Title, authors, Poster, infoLink, publishedDate } = item;
 
         let cleanedUpItem = {
             type: "book",
-            title: title,
+            title: Title,
             author: authors[0],
-            image: imageLinks.smallThumbnail,
+            image: Poster,
             url: infoLink,
             year: publishedDate,
         };
 
-        // console.log(cleanedUpItem);
-
         return cleanedUpItem;
+    } else {
+        console.log("returning movie item unclean");
+        return item;
     }
 }

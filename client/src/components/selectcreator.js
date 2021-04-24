@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Selector from "./selectors";
 
 export default function Selectcreator() {
+    const noImage = "/no-results.png";
     const [playlistStatus, setPlaylistStatus] = useState();
     const [error, setError] = useState(false);
     const dispatch = useDispatch();
@@ -62,13 +63,33 @@ export default function Selectcreator() {
                 )}
                 <button className="finish-button">Next</button>
             </div>
-
-            <div>
-                {items &&
-                    items.map((item, i) => {
-                        console.log("item in selectcreator", item);
-                        return <img key={item.i} src={item.image}></img>;
-                    })}
+            <div className="preview-wrapper">
+                <h2>Preview {playlist.title}</h2>
+                <div className="preview">
+                    <div className="single-items">
+                        {items &&
+                            items.map((item, i) => {
+                                if (item.image) {
+                                    return (
+                                        <img
+                                            key={i}
+                                            src={
+                                                item.image.smallThumbnail ||
+                                                noImage
+                                            }
+                                        ></img>
+                                    );
+                                } else {
+                                    return (
+                                        <img
+                                            key={i}
+                                            src={item.Poster || noImage}
+                                        ></img>
+                                    );
+                                }
+                            })}
+                    </div>
+                </div>
             </div>
         </section>
     );

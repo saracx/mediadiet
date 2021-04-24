@@ -3,6 +3,9 @@ import { receivePlaylistDraft } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUp } from "../utils";
 
+import { movieRequests } from "../requests/movies";
+import { bookRequests } from "../requests/books";
+
 export default function Selector() {
     const noImage = "/no-results.png";
     const dispatch = useDispatch();
@@ -28,23 +31,14 @@ export default function Selector() {
     useEffect(() => {
         let abort;
         if (option == "movies") {
-            console.log("the movie query goes here");
+            movieRequests(query, abort, (res) => {
+                setResults(res);
+            });
         }
         if (option == "books") {
-            const BASE_URL =
-                "https://www.googleapis.com/books/v1/volumes?q=" +
-                query +
-                "&printType=books";
-            fetch(BASE_URL, { method: "GET" })
-                .then((response) => response.json())
-                .then((json) => {
-                    let { items } = json;
-                    if (!abort) {
-                        console.log(items);
-                        setResults(items);
-                    }
-                })
-                .catch((err) => console.log("err in book fetch", err));
+            bookRequests(query, abort, (res) => {
+                setResults(res);
+            });
         }
         return () => {
             abort = true;
@@ -52,8 +46,7 @@ export default function Selector() {
     }, [query]);
 
     const selectItem = (item) => {
-        // setSelectedItems(cleanUp(item));
-
+        console.log("item in selectItem", item);
         setQuery(null);
 
         dispatch(receivePlaylistDraft(cleanUp(item)));
@@ -87,19 +80,19 @@ export default function Selector() {
                                   return (
                                       <li
                                           onClick={(e) => selectItem(item)}
-                                          key={item.id}
+                                          key={item.id || i}
                                       >
                                           <img
                                               className="small"
                                               src={
-                                                  item.volumeInfo.imageLinks
-                                                      ? item.volumeInfo
-                                                            .imageLinks
-                                                            .smallThumbnail
+                                                  item.Poster
+                                                      ? item.Poster
+                                                            .smallThumbnail ||
+                                                        item.Poster
                                                       : noImage
                                               }
                                           ></img>
-                                          {item.volumeInfo.title}
+                                          {item.Title}
                                       </li>
                                   );
                               }
