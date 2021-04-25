@@ -5,7 +5,7 @@ const {
     getLastMixtapeDraft,
     addItems,
     getThisPlaylist,
-    getAllUserMixtapes,
+    getAllMixtapesForThisUser,
     publishThisMixtape,
 } = require("../sql/db");
 const { requireLoggedInUser } = require("../middleware/auth");
@@ -92,7 +92,7 @@ const getFinalMixtapes = async (req, res) => {
     console.log("Arrived at get Final Mixtapes for user", req.params.id);
     let id = req.params.id;
     try {
-        const { rows } = await getAllUserMixtapes(id);
+        const { rows } = await getAllMixtapesForThisUser(id);
 
         if (rows.length < 1) {
             return res.status(200).json({

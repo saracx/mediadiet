@@ -6,6 +6,7 @@ import Logo from "./logo";
 import Playlisteditor from "./playlist_editor";
 import MyMixtapes from "./mymixtapes.js";
 import ThisMixtape from "./thismixtape";
+import AllMixtapes from "./allmixtapes";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -36,6 +37,10 @@ export default function App() {
                     />
                     <Route path="/my-mixtapes" render={() => <MyMixtapes />} />
                     <Route path="/mixtape/:id" render={() => <ThisMixtape />} />
+                    <Route
+                        path="/mixtapes/all"
+                        render={() => <AllMixtapes />}
+                    />
                 </div>
             </BrowserRouter>
             <Logout></Logout>

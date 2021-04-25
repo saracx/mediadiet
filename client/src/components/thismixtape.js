@@ -5,8 +5,8 @@ import { Link, useParams } from "react-router-dom";
 // import { cleanUpForPrinting } from "../utils";
 
 export default function ThisMixtape() {
-    const { id } = useParams();
-
+    const { id, mix_id } = useParams();
+    console.log("params", id, mix_id);
     // const user = useSelector((state) => state && state.user);
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState([]);
@@ -34,7 +34,7 @@ export default function ThisMixtape() {
     }, []);
 
     if (!items || !meta) {
-        return null;
+        return <h2>No Items here?</h2>;
     }
 
     return (

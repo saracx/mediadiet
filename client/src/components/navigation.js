@@ -21,6 +21,11 @@ export default function Navigation() {
                         My Mixtapes
                     </Link>{" "}
                 </li>
+                <li>
+                    <Link className="" to={"/mixtapes/all"}>
+                        All mixtapes
+                    </Link>{" "}
+                </li>
             </ul>
         </section>
     );

@@ -26,14 +26,17 @@ export function cleanUp(item) {
     }
 }
 
-// export function cleanUpForPrinting(item) {
-//     if (item.type == "book") {
-//         let newItem = JSON.parse(item.image);
-//         return newItem;
-//     }
-//     if (item.type == "movie") {
-//         let url = item.url;
-//         let newItem = `http://www.imdb.com/${url}`;
-//         return newItem;
-//     } else return item;
-// }
+export function randomBG(min, max) {
+    let randomNumber = Math.round(Math.random() * (max - min) + min);
+    console.log("randomnumber", randomNumber);
+    if (randomNumber < 25) {
+        return "mixtape1";
+    }
+    if (randomNumber < 50) {
+        return "mixtape2";
+    }
+    if (randomNumber > 50 < 100) {
+        console.log("at mixtape3");
+        return "mixtape3";
+    }
+}

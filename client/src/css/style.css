@@ -1,5 +1,7 @@
 @import url("https://use.typekit.net/nyf7ylr.css");
 
+@import url("https://fonts.googleapis.com/css2?family=Schoolbell&display=swap");
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -26,6 +28,7 @@
     --link-hover-color: rgba(90, 120, 255, 1);
     --meta-color: #666;
     --error-color: #fe4747;
+    --handwriting1: "Schoolbell", cursive;
 }
 
 /* //=== BASIC STYLING === // */

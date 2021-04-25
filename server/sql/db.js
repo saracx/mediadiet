@@ -90,10 +90,9 @@ module.exports.getThisPlaylist = function (id) {
     return db.query(query, params);
 };
 
-module.exports.getAllUserMixtapes = function (id) {
-    const query = `SELECT * FROM mixtapes WHERE user_id = $1`;
-    const params = [id];
-    return db.query(query, params);
+module.exports.getAllUserMixtapes = function () {
+    const query = `SELECT * FROM mixtapes WHERE draft = false`;
+    return db.query(query);
 };
 
 module.exports.publishThisMixtape = function (id) {
@@ -112,6 +111,12 @@ module.exports.getSingleMixtape = function (id) {
 
 module.exports.getMixtapeMeta = function (id) {
     const query = `SELECT * FROM mixtapes WHERE id = $1`;
+    const params = [id];
+    return db.query(query, params);
+};
+
+module.exports.getAllMixtapesForThisUser = function (id) {
+    const query = `SELECT * FROM mixtapes WHERE user_id = $1`;
     const params = [id];
     return db.query(query, params);
 };

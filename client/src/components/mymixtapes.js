@@ -9,8 +9,6 @@ export default function MyMixtapes() {
     const [drafts, setDrafts] = useState([]);
     const [error, setError] = useState("");
 
-    console.log(user);
-
     useEffect(() => {
         user &&
             (async () => {
@@ -18,8 +16,8 @@ export default function MyMixtapes() {
                     const { data } = await axios.get(
                         "/api/playlist/" + user.id
                     );
-                    console.log("data at MyMixtapes in client", data);
-                    if (data.success) {
+
+                    if (data.success && data.mixtapes) {
                         let unfiltered = data.mixtapes;
                         const drafts = unfiltered.filter((tape) => {
                             return tape.draft == true;
@@ -45,66 +43,65 @@ export default function MyMixtapes() {
                 don't you start?
             </h2>
         );
-    } else console.log(user);
+    } else
+        return (
+            <div id="my-playlists">
+                <h2 className="welcome-landing">
+                    Hello {user && user.first} {user && user.id}
+                </h2>
+                Here is a list of your playlists! We do not have any pictures
+                yet, but we're going to change that soon. :)
+                <h3>Published tapes</h3>
+                {mixtapes &&
+                    mixtapes.map((tape, i) => {
+                        return (
+                            <div className="mixtape" key={tape.id}>
+                                <details>
+                                    <summary>
+                                        <Link
+                                            params={tape.id}
+                                            to={{
+                                                pathname: `/mixtape/${tape.id}`,
+                                                mix_id: tape.id,
+                                            }}
+                                        >
+                                            {" "}
+                                            {tape.title}
+                                        </Link>
+                                    </summary>
+                                    {tape.description}
+                                    <br></br>
+                                    {tape.created_at.toLocaleString()}
+                                </details>
+                            </div>
+                        );
+                    })}
+                <h3>Your drafts</h3>
+                {drafts &&
+                    drafts.map((tape, i) => {
+                        return (
+                            <div className="mixtape" key={tape.id}>
+                                <details>
+                                    <summary>
+                                        <Link
+                                            params={tape.id}
+                                            to={{
+                                                pathname: `/mixtape/${tape.id}`,
+                                                mix_id: tape.id,
+                                            }}
+                                        >
+                                            {" "}
+                                            {tape.title}
+                                        </Link>
+                                    </summary>
 
-    return (
-        <div id="my-playlists">
-            <h2 className="welcome-landing">
-                Hello {user && user.first} {user && user.id}
-            </h2>
-            Here is a list of your playlists! We do not have any pictures yet,
-            but we're going to change that soon. :)
-            <h3>Published tapes</h3>
-            {mixtapes &&
-                mixtapes.map((tape, i) => {
-                    return (
-                        <div className="mixtape" key={tape.id}>
-                            <details>
-                                <summary>
-                                    <Link
-                                        params={tape.id}
-                                        to={{
-                                            pathname: `/mixtape/${tape.id}`,
-                                            mix_id: tape.id,
-                                        }}
-                                    >
-                                        {" "}
-                                        {tape.title}
-                                    </Link>
-                                </summary>
-                                {tape.description}
-                                <br></br>
-                                {tape.created_at.toLocaleString()}
-                            </details>
-                        </div>
-                    );
-                })}
-            <h3>Your drafts</h3>
-            {drafts &&
-                drafts.map((tape, i) => {
-                    return (
-                        <div className="mixtape" key={tape.id}>
-                            <details>
-                                <summary>
-                                    <Link
-                                        params={tape.id}
-                                        to={{
-                                            pathname: `/mixtape/${tape.id}`,
-                                            mix_id: tape.id,
-                                        }}
-                                    >
-                                        {" "}
-                                        {tape.title}
-                                    </Link>
-                                </summary>
-
-                                {tape.description}
-                                <br></br>
-                                {tape.created_at.toLocaleString()}
-                            </details>
-                        </div>
-                    );
-                })}
-        </div>
-    );
+                                    {tape.description}
+                                    <br></br>
+                                    {tape.created_at.toLocaleString()}
+                                </details>
+                            </div>
+                        );
+                    })}
+            </div>
+        );
 }

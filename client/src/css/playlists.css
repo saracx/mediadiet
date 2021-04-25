@@ -182,6 +182,8 @@ li {
     cursor: pointer;
 }
 
+/* Playlist view */
+
 .preview-image {
     width: 60px;
     height: 80px;
@@ -230,4 +232,62 @@ h4 {
 .item-meta {
     text-align: center;
     min-height: 20px;
+}
+
+.test {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.mixtape-picture {
+    transform: rotate(3deg);
+    width: 200px;
+}
+
+.mixtape-title {
+    font-family: var(--handwriting1);
+    position: absolute;
+    top: 40%;
+    left: 30%;
+}
+
+.mixtape1 {
+    width: 300px;
+    height: 200px;
+    background: url("../mixtape.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.mixtape2 {
+    width: 300px;
+    height: 200px;
+    transform: rotate(2deg);
+    background: url("../mixtape2.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.mixtape3 {
+    width: 320px;
+    height: 200px;
+    color: white;
+    background: url("../mixtape3.jpeg");
+    background-size: cover;
+    position: relative;
+}
+
+.mixtape-title2 {
+    font-size: large;
+    transform: rotate(4deg);
+    width: 250px;
+    font-family: var(--handwriting1);
+    position: absolute;
+    top: 120px;
+    left: 25px;
+    background-color: rgba(90, 120, 255, 0.7);
+    /* left: 150px; */
+    text-align: center;
 }
