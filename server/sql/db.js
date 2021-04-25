@@ -91,7 +91,7 @@ module.exports.getThisPlaylist = function (id) {
 };
 
 module.exports.getAllUserMixtapes = function (id) {
-    const query = `SELECT * FROM mixtapes WHERE user_id = $1 AND draft = FALSE;`;
+    const query = `SELECT * FROM mixtapes WHERE user_id = $1`;
     const params = [id];
     return db.query(query, params);
 };
