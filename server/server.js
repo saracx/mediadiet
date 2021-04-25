@@ -18,6 +18,7 @@ const login = require("./routes/login");
 const welcome = require("./routes/welcome");
 const userRouter = require("./routes/user");
 const playlistRouter = require("./routes/playlist");
+const mixtapeRouter = require("./routes/mixtape");
 // const upload = require("./routes/upload");
 // const bio = require("./routes/bio");
 // const otherUser = require("./routes/getotherusers.js");
@@ -67,7 +68,8 @@ app.use("/welcome", welcome);
 // app.use("/bio", bio);
 // app.use(otherUser);
 app.use("/api/user", userRouter);
-app.use("/api/playlist", playlistRouter);
+app.use("/api/playlist", playlistRouter); // generates the playlist, has to be renamed; renders playlist titles
+app.use("/api/mixtape", mixtapeRouter); // shows the single playlist and its items
 // app.use("/relationship", relationRouter);
 // app.use("/images", imageRouter);
 // app.use("/library", libraryRouter);

@@ -98,10 +98,7 @@ export default function Selector() {
                     <>
                         <img
                             className="preview-image"
-                            src={
-                                selectedItem.image.smallThumbnail ||
-                                selectedItem.image
-                            }
+                            src={selectedItem.image || selectedItem.image}
                         ></img>
                     </>
                 ) : (

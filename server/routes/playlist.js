@@ -93,7 +93,6 @@ const getFinalMixtapes = async (req, res) => {
     let id = req.params.id;
     try {
         const { rows } = await getAllUserMixtapes(id);
-        console.log("All the mixtapes from this user", rows);
 
         if (rows.length < 1) {
             return res.status(200).json({

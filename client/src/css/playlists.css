@@ -187,3 +187,47 @@ li {
     height: 80px;
     object-fit: cover;
 }
+
+.mixtape-view {
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+    grid-row-gap: 0.5em;
+    grid-column-gap: 1em;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border-radius: var(--border-radius);
+    border-color: var(--border-color);
+    box-shadow: var(--box-shadow);
+    padding: 0.8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-image {
+    height: 200px;
+    width: auto;
+    min-width: 140px;
+    object-fit: cover;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+h4 {
+    text-align: center;
+    width: 100%;
+    min-height: 50px;
+}
+
+.item-meta {
+    text-align: center;
+    min-height: 20px;
+}

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "../axios";
+import { Link, useParams } from "react-router-dom";
 
 export default function MyMixtapes() {
     const user = useSelector((state) => state && state.user);
@@ -56,11 +57,21 @@ export default function MyMixtapes() {
             <h3>Published tapes</h3>
             {mixtapes &&
                 mixtapes.map((tape, i) => {
-                    console.log(tape);
                     return (
                         <div className="mixtape" key={tape.id}>
                             <details>
-                                <summary>{tape.title}</summary>
+                                <summary>
+                                    <Link
+                                        params={tape.id}
+                                        to={{
+                                            pathname: `/mixtape/${tape.id}`,
+                                            mix_id: tape.id,
+                                        }}
+                                    >
+                                        {" "}
+                                        {tape.title}
+                                    </Link>
+                                </summary>
                                 {tape.description}
                                 <br></br>
                                 {tape.created_at.toLocaleString()}
@@ -71,11 +82,22 @@ export default function MyMixtapes() {
             <h3>Your drafts</h3>
             {drafts &&
                 drafts.map((tape, i) => {
-                    console.log(tape);
                     return (
                         <div className="mixtape" key={tape.id}>
                             <details>
-                                <summary>{tape.title}</summary>
+                                <summary>
+                                    <Link
+                                        params={tape.id}
+                                        to={{
+                                            pathname: `/mixtape/${tape.id}`,
+                                            mix_id: tape.id,
+                                        }}
+                                    >
+                                        {" "}
+                                        {tape.title}
+                                    </Link>
+                                </summary>
+
                                 {tape.description}
                                 <br></br>
                                 {tape.created_at.toLocaleString()}

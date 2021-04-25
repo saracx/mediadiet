@@ -6,7 +6,7 @@ export function cleanUp(item) {
             type: "book",
             title: Title,
             author: authors[0],
-            image: Poster,
+            image: Poster.smallThumbnail,
             url: infoLink,
             year: publishedDate,
         };
@@ -18,10 +18,22 @@ export function cleanUp(item) {
         let cleanedUpItem = {
             type: "movie",
             title: Title,
-            url: imdbID,
+            url: "http://www.imdb.com/title/" + imdbID,
             year: Year,
             image: Poster,
         };
         return cleanedUpItem;
     }
 }
+
+// export function cleanUpForPrinting(item) {
+//     if (item.type == "book") {
+//         let newItem = JSON.parse(item.image);
+//         return newItem;
+//     }
+//     if (item.type == "movie") {
+//         let url = item.url;
+//         let newItem = `http://www.imdb.com/${url}`;
+//         return newItem;
+//     } else return item;
+// }

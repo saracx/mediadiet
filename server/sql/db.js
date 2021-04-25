@@ -103,3 +103,15 @@ module.exports.publishThisMixtape = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+module.exports.getSingleMixtape = function (id) {
+    const query = `SELECT * FROM items WHERE mixtape_id = $1`;
+    const params = [id];
+    return db.query(query, params);
+};
+
+module.exports.getMixtapeMeta = function (id) {
+    const query = `SELECT * FROM mixtapes WHERE id = $1`;
+    const params = [id];
+    return db.query(query, params);
+};
