@@ -23,12 +23,12 @@ export default function Selectcreator() {
         !playlist && dispatch(receivePlaylist());
     }, []);
 
-    useEffect(() => {
-        window.addEventListener("beforeunload", (ev) => {
-            ev.preventDefault();
-            return (ev.returnValue = "Are you sure you want to close?");
-        });
-    });
+    // useEffect(() => {
+    //     window.addEventListener("beforeunload", (ev) => {
+    //         ev.preventDefault();
+    //         return (ev.returnValue = "Are you sure you want to close?");
+    //     });
+    // });
 
     const handleClick = async () => {
         if (items.length <= 3) {

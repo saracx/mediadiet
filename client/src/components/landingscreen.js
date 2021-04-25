@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Landingscreen() {
     const user = useSelector((state) => state && state.user);
+
     return (
         <div id="welcome-screen">
             <h2 className="welcome-landing">Hello {user && user.first}</h2>

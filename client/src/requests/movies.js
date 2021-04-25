@@ -16,7 +16,7 @@ export function movieRequests(query, abort, callback) {
         .request(options)
         .then(function (response) {
             if (!abort) {
-                console.log("response data", response.data.Search);
+                // console.log("response data", response.data.Search);
                 let res = response.data.Search;
                 callback(res);
             }

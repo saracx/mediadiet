@@ -89,3 +89,17 @@ module.exports.getThisPlaylist = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+module.exports.getAllUserMixtapes = function (id) {
+    const query = `SELECT * FROM mixtapes WHERE user_id = $1 AND draft = FALSE;`;
+    const params = [id];
+    return db.query(query, params);
+};
+
+module.exports.publishThisMixtape = function (id) {
+    const query = `UPDATE mixtapes
+    SET draft = false
+    WHERE id = $1 RETURNING *`;
+    const params = [id];
+    return db.query(query, params);
+};

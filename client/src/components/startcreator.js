@@ -7,14 +7,12 @@ import { Link } from "react-router-dom";
 
 export default function Startcreator() {
     const dispatch = useDispatch();
-    const playlist = useSelector((state) => state && state.playlist);
-    // const [cookies, setCookie] = useCookies();
 
     const [input, setInput] = useState({});
     const [error, setError] = useState(false);
 
     const handleChange = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setInput((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -25,12 +23,10 @@ export default function Startcreator() {
     const handleClick = (e) => {
         if (!input || !input.title || !input.description) {
             return setError("Please fill out all required fields");
+        } else {
+            dispatch(addPlaylist(input));
+            setError(false);
         }
-        dispatch(addPlaylist(input));
-        setError(false);
-        // setCookie("mixtape", true, {
-        //     path: "/",
-        // });
     };
 
     return (
@@ -57,16 +53,14 @@ export default function Startcreator() {
                     onChange={(e) => handleChange(e)}
                     className="required"
                     name="title"
-                    placeholder={playlist ? playlist.title : "Your title here"}
+                    placeholder="Your title here"
                 ></input>
                 <h3 className="labels">Description*</h3>
                 <textarea
                     onChange={(e) => handleChange(e)}
                     className="required"
                     name="description"
-                    placeholder={
-                        playlist ? playlist.title : "Your description here"
-                    }
+                    placeholder="Your description here"
                 ></textarea>
                 {error && <p className="error">{error}</p>}
                 <Link to="/select">

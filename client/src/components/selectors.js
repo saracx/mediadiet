@@ -80,7 +80,7 @@ export default function Selector() {
                     <option>movies</option>
                 </select>
             ) : (
-                <p>{selectedItem.title.substring(0, 20)}</p>
+                <p>{selectedItem.title.substring(0, 50)}</p>
             )}
 
             <div className="search-list">
@@ -111,7 +111,7 @@ export default function Selector() {
                 <ul>
                     {results && query
                         ? results.map((item, i) => {
-                              while (i < 3) {
+                              while (i < 4) {
                                   return (
                                       <li
                                           onClick={(e) => selectItem(item)}
@@ -127,7 +127,7 @@ export default function Selector() {
                                                       : noImage
                                               }
                                           ></img>
-                                          {item.Title}
+                                          {item.Title.substring(0, 50)}
                                       </li>
                                   );
                               }

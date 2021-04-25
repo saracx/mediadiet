@@ -74,9 +74,23 @@ export async function deleteItem(item) {
     };
 }
 
-// export async function receiveItems() {
-//     // axios request to get all items from database and store in state
-// //     return {
-// //         type: "GET_ITEMS",
-// //     };
-// }
+export async function receiveFinalMixtapes(id) {
+    console.log("user id in actions", id);
+    try {
+        const { data } = await axios.get("/api/playlist/" + id);
+        console.log("data in receiveFinalMixtapes", data);
+
+        if (data.error) {
+            return {
+                type: "ERROR_MESSAGE",
+                error: data.error,
+            };
+        } else
+            return {
+                type: "RECEIVE_MIXTAPES",
+                mixtapes: data,
+            };
+    } catch (err) {
+        console.log("error in receiveFinalMixtapes action", err);
+    }
+}
