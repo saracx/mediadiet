@@ -2,10 +2,17 @@ const express = require("express");
 const router = express.Router();
 var request = require("request");
 var postQuery = "grant_type=client_credentials";
-const { CLIENT_ID, CLIENT_SECRET } = require("../../secrets.json");
+// const { CLIENT_ID, CLIENT_SECRET } = require("../../secrets.json");
+
+let secrets;
+if (process.env.NODE_ENV == "production") {
+    secrets = process.env; // in prod the secrets are environment variables
+} else {
+    secrets = require("./secrets"); // in dev they are in secrets.json which is listed in .gitignore
+}
 
 const getToken = async (req, res) => {
-    const creds = `${CLIENT_ID}:${CLIENT_SECRET}`;
+    const creds = `${secrets.CLIENT_ID}:${secrets.CLIENT_SECRET}`;
     const encodedCreds = btoa(creds);
     console.log("arrived at gettoken");
 
