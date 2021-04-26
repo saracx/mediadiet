@@ -32,53 +32,35 @@ export default function AllMixtapes() {
         );
     } else
         return (
-            <div id="my-playlists">
-                <h2 className="welcome-landing">All published playlists</h2>
+            <div id="all-playlists">
+                <h2 className="welcome-landing">All MIXTAPES</h2>
 
-                <div className={randomBG(1, 100)}>
-                    <p className="mixtape-title2">Short Title</p>
-                </div>
-
-                <div className={randomBG(1, 100)}>
-                    <p className="mixtape-title2">
-                        SUPER COOL MIXTAPE WITH A LONG ASSSSSS{" "}
-                    </p>
-                </div>
-                <div className={randomBG(1, 100)}>
-                    <p className="mixtape-title2">
-                        SUPER COOL MIXTAPE WITH A LONG ASSSSSS{" "}
-                    </p>
-                </div>
-
-                {allMixtapes &&
-                    allMixtapes.map((tape, i) => {
-                        console.log(tape);
-                        return (
-                            <div
-                                className="mixtape"
-                                id={tape.id}
-                                key={"mixtapes0x0x0" + tape.id}
-                            >
-                                <details>
-                                    <summary>
+                <div id="mixtape-grid">
+                    {allMixtapes &&
+                        allMixtapes.map((tape, i) => {
+                            return (
+                                <div
+                                    key={tape.mixtape_id}
+                                    className={randomBG(1, 100)}
+                                >
+                                    <p className="mixtape mixtape-title2">
                                         <Link
                                             params={tape.id}
                                             to={{
-                                                pathname: `/mixtape/${tape.id}`,
+                                                pathname: `/mixtape/${tape.mixtape_id}`,
                                                 mix_id: tape.id,
                                             }}
                                         >
-                                            {" "}
                                             {tape.title}
                                         </Link>
-                                    </summary>
-                                    {tape.description}
-                                    <br></br>
-                                    {tape.created_at.toLocaleString()}
-                                </details>
-                            </div>
-                        );
-                    })}
+                                    </p>
+                                    <div className="name-sticker">
+                                        <span>by {tape.name}</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                </div>
             </div>
         );
 }

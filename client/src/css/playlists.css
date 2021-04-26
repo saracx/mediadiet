@@ -241,9 +241,57 @@ h4 {
     border: 1px solid black;
 }
 
-.mixtape-picture {
-    transform: rotate(3deg);
+/* View all playlists */
+
+#mixtape-grid {
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.5rem;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.mixtape {
     width: 200px;
+    height: 140px;
+    position: relative;
+}
+
+.mixtape1 {
+    background: url("../mixtape.jpg");
+    background-size: cover;
+}
+.mixtape2 {
+    transform: rotate(2deg);
+    background: url("../mixtape2.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.mixtape3 {
+    width: 220px;
+    color: white;
+    background: url("../mixtape3.jpeg");
+    background-size: cover;
+    position: relative;
+}
+
+.mixtape-title2 {
+    transform: rotate(-1deg);
+    width: 150px;
+    min-height: 20px;
+    max-height: 35px;
+    font-family: var(--handwriting1);
+    position: absolute;
+    top: 70px;
+    left: 27px;
+    background-color: rgba(90, 120, 255, 0.7);
+    /* left: 150px; */
+    text-align: center;
 }
 
 .mixtape-title {
@@ -253,41 +301,24 @@ h4 {
     left: 30%;
 }
 
-.mixtape1 {
-    width: 300px;
-    height: 200px;
-    background: url("../mixtape.jpg");
-    background-size: cover;
-    position: relative;
-}
-
-.mixtape2 {
-    width: 300px;
-    height: 200px;
-    transform: rotate(2deg);
-    background: url("../mixtape2.jpg");
-    background-size: cover;
-    position: relative;
-}
-
-.mixtape3 {
-    width: 320px;
-    height: 200px;
-    color: white;
-    background: url("../mixtape3.jpeg");
-    background-size: cover;
-    position: relative;
-}
-
-.mixtape-title2 {
-    font-size: large;
-    transform: rotate(4deg);
-    width: 250px;
-    font-family: var(--handwriting1);
+.name-sticker {
+    width: 50px;
+    height: 50px;
     position: absolute;
-    top: 120px;
-    left: 25px;
-    background-color: rgba(90, 120, 255, 0.7);
-    /* left: 150px; */
+    background-color: var(--button-color);
+    color: white;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
+    padding: 0;
+    transform: rotate(-10deg);
+}
+
+.name-sticker > span {
+    padding: 0;
+    margin: 0;
+    font-size: 0.6rem;
+    font-family: var(--handwriting1);
 }

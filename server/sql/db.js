@@ -91,7 +91,7 @@ module.exports.getThisPlaylist = function (id) {
 };
 
 module.exports.getAllUserMixtapes = function () {
-    const query = `SELECT * FROM mixtapes WHERE draft = false`;
+    const query = `SELECT mixtapes.id AS mixtape_id, title, description, mixtapes.created_at, users.first AS name FROM mixtapes JOIN users ON mixtapes.user_id = users.id WHERE mixtapes.draft = false`;
     return db.query(query);
 };
 
