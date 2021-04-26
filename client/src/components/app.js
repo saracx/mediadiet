@@ -26,7 +26,6 @@ export default function App() {
         <div id="app">
             <BrowserRouter>
                 <nav id="navigation">
-                    <Logo></Logo>
                     <Navigation></Navigation>
                 </nav>
                 <div id="main">

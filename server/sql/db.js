@@ -110,7 +110,7 @@ module.exports.getSingleMixtape = function (id) {
 };
 
 module.exports.getMixtapeMeta = function (id) {
-    const query = `SELECT * FROM mixtapes WHERE id = $1`;
+    const query = `SELECT * FROM mixtapes JOIN users ON users.id = mixtapes.user_id WHERE mixtapes.id = $1`;
     const params = [id];
     return db.query(query, params);
 };

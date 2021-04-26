@@ -64,7 +64,7 @@ export default function Selectcreator() {
             <h3>
                 Select items for{" "}
                 {playlist && (
-                    <span className="playlist-name">{playlist.title}</span>
+                    <span className="playlist-name">{playlist.title} 👇</span>
                 )}
             </h3>
             <Selector key="1"></Selector>
@@ -84,7 +84,6 @@ export default function Selectcreator() {
                 <button onClick={() => handleClick()} className="finish-button">
                     Next
                 </button>
-                <Preview></Preview>
             </div>
         </section>
     );

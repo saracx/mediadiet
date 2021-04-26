@@ -59,7 +59,7 @@ export default function Login() {
                 className="signup-button"
                 type="submit"
             >
-                Sign up
+                Login
             </button>
 
             <div className="registration-links">

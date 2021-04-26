@@ -1,8 +1,4 @@
-@import url("https://use.typekit.net/nyf7ylr.css");
-
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Just+Another+Hand&family=Rock+Salt&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Schoolbell&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 * {
     box-sizing: border-box;
@@ -11,28 +7,29 @@
 
 :root {
     --main-bg-color: white;
-    --header-font: Arial, sans-serif;
-    --subtitle-font: Arial, sans-serif;
+    --header-font: sans-serif;
+    --subtitle-font: sans-serif;
     --main-text-color: #111;
     --main-font: Arial;
     --main-font-size: 0.8rem;
     --small: 0.7rem;
-    --highlight-text-color: #ea2d32;
+    --highlight-text-color: rgb(112, 92, 92);
     --link-color: black;
-    --meta-font: Arial;
+    --meta-font: "IBM Plex Mono", monospace;
     --grey: #666;
-    --highlight-color: #b3d635;
-    --button-color: #b4d631;
-    --border-color: #b4d631;
-    --purple: #694dff;
-    --nav-font: "Arial Black";
-
+    --highlight-color: blue;
+    --button-color: #aaa;
+    --border-color: #aaa;
+    --nav-font: "IBM Plex Mono", monospace;
+    --color1: #333936;
+    --color2: #ccc;
+    --color3: #333936;
     --border-radius: 2px;
 
     --link-hover-color: #ef233e;
     --meta-color: #666;
     --error-color: #ef233e;
-    --handwriting1: "Schoolbell", cursive;
+    --handwriting1: Arial;
 }
 
 /* //=== BASIC STYLING === // */
@@ -78,6 +75,10 @@ p {
     margin: 0.7rem auto;
 }
 
+h1 {
+    margin-top: 2rem;
+}
+
 textarea,
 select,
 option,
@@ -86,30 +87,24 @@ input,
 .file-upload {
     transition: 0.5s;
     margin: 0.1rem auto;
-    width: 120px;
     height: 36px;
     text-align: center;
     outline: none;
-    height: 32px;
+    height: auto;
     line-height: 32px;
-    padding: 0 12px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
+    padding: 0.4 1rem;
     font-family: var(--main-font);
-    color: var(--highlight-text-color);
+    color: var(--highlight-color);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+
     background-color: transparent;
 }
 
 button:hover,
 .file-upload:hover {
-    color: var(--purple);
+    color: var(--highlight-color);
     transition: 0.5s;
-    border-color: var(--purple);
+    border-color: var(--highlight-color);
     cursor: pointer;
     outline: none;
     box-shadow: 0px 0px;
@@ -118,19 +113,23 @@ button:hover,
 
 button:focus,
 input:focus {
-    border: 1px solid var(--purple);
-    color: var(--purple);
+    border: 1px solid var(--color2);
+    color: var(--color2);
+}
+
+button {
+    width: 120px;
+    border: 0px;
 }
 
 h2,
 h3 {
-    margin: 1rem auto;
-
+    margin: 0.8rem auto;
     font-family: var(--header-font);
-    text-transform: capitalize;
-    font-size: 1.6rem;
-    color: var(--highlight-text-color);
+    color: var(--color1);
     text-align: left;
+    font-size: 0.8rem;
+    font-weight: 300;
 }
 
 body {
@@ -143,41 +142,38 @@ body {
 }
 
 .highlight {
-    background-color: var(--highlight-color);
     color: var(--main-text-color);
-    font-style: italic;
 }
 
-#app,
-#registration {
+#app {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     /* border: 1px solid black; */
 }
 
+#registration {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
 #main {
-    width: 90%;
-    min-width: 300px;
-    max-width: 800px;
-    margin: 0 2rem;
+    min-width: 200px;
+    max-width: 90vw;
     padding: 2rem;
+    margin-left: 10vw;
 }
 
 /* Registration  */
 
 .logo {
-    width: 250px;
+    width: 50px;
     margin: 2rem 0 2rem 0;
-    transform: rotate(-2deg);
-    /* height: 100px; */
-}
 
-.intro {
-    width: 50%;
-    text-align: center;
-    margin-bottom: 1rem;
+    /* height: 100px; */
 }
 
 #signup-form {
@@ -186,6 +182,10 @@ body {
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
+}
+
+hr {
+    width: 600px;
 }
 
 label,
@@ -202,4 +202,13 @@ label,
 
 .registration-links a {
     font-size: var(--small);
+}
+
+#logout {
+}
+
+.logout {
+    font-size: 0.7rem;
+    color: var(--color2);
+    border: 0px;
 }

@@ -26,6 +26,7 @@ const mixtapeRouter = require("./routes/mixtape");
 // const deleteUser = require("./routes/delete.js");
 // const imageRouter = require("./routes/images.js");
 // const libraryRouter = require("./routes/library.js");
+const spotifyRouter = require("./routes/spotifyrequest");
 
 // ===== MIDDLEWARE ==== //
 app.use(compression());
@@ -69,7 +70,8 @@ app.use("/welcome", welcome);
 // app.use(otherUser);
 app.use("/api/user", userRouter);
 app.use("/api/playlist", playlistRouter); // generates the playlist, has to be renamed; renders playlist titles
-app.use("/api/mixtape", mixtapeRouter); // shows the single playlist and its items
+app.use("/api/mixtape", mixtapeRouter);
+app.use("/getToken", spotifyRouter); //
 // app.use("/relationship", relationRouter);
 // app.use("/images", imageRouter);
 // app.use("/library", libraryRouter);

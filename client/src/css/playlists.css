@@ -12,10 +12,12 @@
     margin: 1rem;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid black; */
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
     padding: 1rem;
+    width: 80%;
+}
+
+.forms > input {
+    width: 100%;
 }
 
 .labels {
@@ -24,19 +26,13 @@
     margin: 0 1rem;
 }
 
-.forms > .required {
-    margin: 0.5rem auto;
-    width: 230px;
-    text-align: left;
-}
-
 li {
     margin: 0.8rem;
 }
 
 textarea {
     height: 100px;
-    width: 200px;
+    width: 100%;
     text-align: left;
     white-space: normal;
     resize: none;
@@ -45,7 +41,7 @@ textarea {
 
 textarea:focus {
     outline: none;
-    border: 1px solid rgba(90, 120, 255, 1);
+    border: 1px solid var(--color1);
 }
 
 h3 {
@@ -54,57 +50,74 @@ h3 {
 }
 
 .select-form {
+    width: 100%;
+    height: 100px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 2rem auto;
 }
 
 .select-form > input {
-    width: 50%;
+    /* width: 50px; */
+}
+
+.select-form > p {
+    width: 250px;
+    color: var(--color1);
+    font-weight: 700;
+    text-align: center;
 }
 
 .description-selection {
-    height: 2rem;
+    /* height: 2rem;
     width: 100%;
+    border: 1px solid var(--color1); */
 }
 
 .select-form-buttons {
-    margin-top: 2rem;
+    /* margin-top: 2rem;
     display: flex;
-    width: 100%;
+    width: 100%; */
+}
+
+.garbage {
+    text-align: center;
+    cursor: pointer;
 }
 
 #playlist-selector {
-    /* margin-top: 1rem; */
+}
 
-    /* height: 40vw; */
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+.playlist-name {
+    color: var(--highlight-color);
+    font-weight: 700;
 }
 
 .search-list {
     position: relative;
-    width: 200px;
+    width: 250px;
+
+    text-align: center;
 }
 .search-list > input {
-    width: 200px;
+    width: 250px;
 }
 
 .search-list ul {
     position: absolute;
-    background-color: aliceblue;
+    width: 250px;
     margin: 0;
     padding: 0;
 }
 
 .search-list li {
+    color: var(--color3);
     display: flex;
     align-items: flex-start;
-    width: 200px;
+    width: 250px;
     z-index: 200;
     margin: 0.4rem auto;
-    padding: 0;
     text-align: left;
     cursor: pointer;
 }
@@ -128,23 +141,19 @@ h3 {
 }
 
 select {
-    width: 40%;
+    width: 200px;
+    margin: 2rem;
 }
 
 .add-more {
-    width: 40%;
-    margin: 0;
 }
 
 .finish-button {
-    margin: 0;
-    color: var(--link-hover-color);
-
-    /* width: 150px; */
 }
 
 .single-items {
     flex-wrap: wrap;
+    border: 1px solid red;
 }
 
 .preview-wrapper {
@@ -155,15 +164,15 @@ select {
 }
 
 .preview-wrapper > h2 {
-    flex-grow: 3;
+    /* flex-grow: 3;
     text-align: center;
     font-size: 0.9rem;
-    color: var(--meta-color);
+    color: var(--meta-color); */
 }
 
 .preview {
-    display: flex;
-    margin: 1rem;
+    /* display: flex;
+    margin: 1rem; */
 }
 
 .single-items > img {
@@ -177,11 +186,21 @@ li {
     list-style-type: none;
 }
 
-.garbage {
-    cursor: pointer;
+.selected-item {
+    width: 200px;
 }
 
 /* Playlist view */
+
+#my-playlists {
+    max-width: 80vw;
+    border: 0px;
+}
+
+.mixtape-view {
+    margin: 0;
+    padding: 0;
+}
 
 .preview-image {
     width: 60px;
@@ -189,55 +208,49 @@ li {
     object-fit: cover;
 }
 
-.mixtape-view {
-    display: grid;
-    width: 100%;
-
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(auto-fill, auto);
-    grid-row-gap: 0.5em;
-    grid-column-gap: 1em;
-    /* align-items: center; */
-    justify-content: center;
-}
-
 .item {
-    display: flex;
-    flex-direction: column;
     height: auto;
-    border-radius: var(--border-radius);
-    border-color: var(--border-color);
-    box-shadow: var(--box-shadow);
-    padding: 0.8rem;
+    width: 600px;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+
+    margin: 0.6rem auto;
+    padding: 0;
 }
 
 .small-image {
-    height: 200px;
-    width: auto;
+    height: 120px;
+    width: 50px;
     min-width: 140px;
-    object-fit: cover;
-    text-align: center;
-    margin-bottom: 1rem;
+    object-fit: contain;
+    border: 0px;
+    padding: 1rem;
 }
 
 h4 {
-    text-align: center;
     width: 100%;
-    min-height: 50px;
+    padding: 0.1rem 0.5rem;
+    background-color: var(--color2);
+    color: var(--color3);
 }
 
 .item-meta {
-    text-align: center;
-    min-height: 20px;
+    font-family: var(--meta-font);
+    font-size: smaller;
 }
 
-.test {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
+.description {
+    font-style: italic;
+    margin: 0.1rem;
+}
+
+.item-info {
+    min-height: 120px;
+    width: 100%;
+
+    padding: 1rem;
+    margin: 0;
 }
 
 /* View all playlists */
@@ -272,40 +285,45 @@ h4 {
 }
 
 .mixtape3 {
-    width: 220px;
+    width: 250px;
+    height: 160px;
     background: url("../mixtape3.jpeg");
     background-size: cover;
     position: relative;
     color: black;
 }
 
+.mixtape1 > p.mixtape-title2 {
+    color: var(--color3);
+    background-color: rgba(255, 249, 240, 0.5);
+    transform: rotate(1deg);
+}
+
+.mixtape3 > p.mixtape-title2 {
+    color: --var(color1);
+    background-color: var(--highlight-color);
+    left: 40px;
+    transform: rotate(3deg);
+}
+
 .mixtape-title2 {
     transform: rotate(-1deg);
     width: 150px;
-    min-height: 20px;
-    max-height: 35px;
+    height: auto;
     font-family: var(--handwriting1);
+    background-color: rgba(255, 243, 225, 0.5);
     position: absolute;
-    top: 70px;
-    left: 27px;
+    top: 80px;
+    left: 28px;
     text-align: center;
 }
 
-.mixtape-title {
-    font-family: var(--handwriting1);
-    color: var(--link-hover-color);
-    position: absolute;
-    top: 40%;
-    left: 30%;
-}
-
-.name-sticker {
+.mixtape1 > .name-sticker {
     width: 50px;
-    height: 50px;
+    height: 20px;
     position: absolute;
     background-color: var(--button-color);
-    color: white;
-    border-radius: 100%;
+    color: black;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -319,4 +337,31 @@ h4 {
     margin: 0;
     font-size: 0.6rem;
     font-family: var(--handwriting1);
+}
+
+.mixtape2 > .name-sticker {
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--color1);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.name-sticker {
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--color2);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 0;
+    transform: rotate(-10deg);
 }

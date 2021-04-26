@@ -4,7 +4,7 @@ import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
 import { randomBG } from "../utils";
 
-export default function AllMixtapes() {
+export default function AllMixtapes({ title }) {
     const user = useSelector((state) => state && state.user);
     const [allMixtapes, setAllMixtapes] = useState([]);
     const [error, setError] = useState("");
@@ -23,7 +23,7 @@ export default function AllMixtapes() {
             })();
     }, [user]);
 
-    if (!allMixtapes) {
+    if (!allMixtapes && user) {
         return (
             <h2>
                 {user && user.first}, There are no mixtapes here yet! Why don't
@@ -33,7 +33,11 @@ export default function AllMixtapes() {
     } else
         return (
             <div id="all-playlists">
-                <h2 className="welcome-landing">All MIXTAPES</h2>
+                {title ? (
+                    <h2>{title}</h2>
+                ) : (
+                    <h2 className="welcome-landing">All MIXTAPES</h2>
+                )}
 
                 <div className="mixtape-grid">
                     {allMixtapes &&
@@ -43,12 +47,10 @@ export default function AllMixtapes() {
                                     key={tape.mixtape_id}
                                     className={randomBG(1, 100)}
                                 >
-                                    <p className="mixtape mixtape-title2">
+                                    <p className="mixtape-title2">
                                         <Link
-                                            params={tape.id}
                                             to={{
                                                 pathname: `/mixtape/${tape.mixtape_id}`,
-                                                mix_id: tape.id,
                                             }}
                                         >
                                             {tape.title}

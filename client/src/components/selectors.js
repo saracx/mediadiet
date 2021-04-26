@@ -89,7 +89,9 @@ export default function Selector() {
                     <option>music</option>
                 </select>
             ) : (
-                <p>{selectedItem.title.substring(0, 50)}</p>
+                <p className="selected-item">
+                    {selectedItem.title.substring(0, 50)}
+                </p>
             )}
 
             <div className="search-list">
@@ -142,11 +144,11 @@ export default function Selector() {
                 </ul>
             </div>
             {garbage && selectedItem ? (
-                <p onClick={() => handleDeleteItem()} className="garbage">
+                <p className="garbage" onClick={() => handleDeleteItem()}>
                     🚮
                 </p>
             ) : (
-                <p>🚨</p>
+                <p className="garbage">🚨</p>
             )}
         </div>
     );

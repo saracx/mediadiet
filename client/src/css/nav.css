@@ -10,7 +10,7 @@
     flex-direction: column;
     margin: 0;
     height: 100%;
-    width: 15vw;
+    width: 10vw;
     position: fixed;
     left: 0px;
     top: 0;
@@ -18,29 +18,26 @@
     box-shadow: var(--box-shadow);
     background-color: white;
     padding: 0.5rem;
+    text-align: center;
 }
 
 .nav-links > ul {
     display: block;
     list-style-type: none;
     margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
-    /* line-height: 32px; */
+    padding: 0;
+    margin: 0;
     font-size: 1.9rem;
-    width: 120px;
-    text-transform: uppercase;
-
     outline: none;
-    font-weight: 500;
     font-family: var(--nav-font);
-    border-bottom: 2px solid var(--border-color);
     background-color: transparent;
 }
 
 .nav-links a {
-    font-size: larger;
     color: var(--link-color);
     text-decoration: none;
     transition: 0.5s;
@@ -55,8 +52,7 @@
     padding: 0.3rem;
     align-items: center;
     outline: none;
-    width: 15vw;
-    margin: 2rem;
+    width: 10vw;
 }
 
 .logo-nav:focus {

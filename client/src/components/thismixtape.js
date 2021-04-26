@@ -4,19 +4,18 @@ import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
 // import { cleanUpForPrinting } from "../utils";
 
-export default function ThisMixtape() {
-    const { id, mix_id } = useParams();
-    console.log("params", id, mix_id);
-    // const user = useSelector((state) => state && state.user);
+export default function ThisMixtape({ first }) {
+    console.log(first);
+    const { id } = useParams();
+    console.log("params", id);
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState([]);
 
+    console.log("meta", meta);
+
     const [error, setError] = useState("");
 
-    // console.log(user);
-
     useEffect(() => {
-        // user &&
         (async () => {
             try {
                 const { data } = await axios.get("/api/mixtape/" + id);
@@ -41,48 +40,37 @@ export default function ThisMixtape() {
         <div id="my-playlists">
             <h2>
                 <span className="highlight">
-                    {meta.title} ({items.length})
+                    <b>Mixtape</b>: {meta.title} ({items.length})
                 </span>
             </h2>
-            <p className="meta">
-                <b>Description:</b>
-                &nbsp;
-                {meta.description} &nbsp;
-                <b>Number of items:</b>
-                &nbsp;
-                {items.length}
-            </p>
+            <p className="description">by {meta.first}</p>
+            <p className="description">{meta.description}</p>
 
             <div className="mixtape-view">
                 {items.map((item, i) => {
-                    {
-                        /* const cleanItem = cleanUpForPrinting(item); */
-                    }
+                    return (
+                        <div key={item.i} className="item">
+                            <img
+                                alt={item.title}
+                                className="small-image"
+                                src={item.image}
+                            ></img>
 
-                    {
-                        /* console.log("small Thumbnail", cleanItem.smallThumbnail); */
-                    }
-
-                    {
-                        return (
-                            <div key={item.i} className="item">
+                            <div className="item-info">
                                 <a
                                     href={item.url || cleanItem.url}
                                     target="_blank"
                                 >
-                                    <img
-                                        alt={item.title}
-                                        className="small-image"
-                                        src={item.image}
-                                    ></img>
-                                    <h4>{item.title}</h4>{" "}
+                                    <h4>
+                                        👉 {item.i}
+                                        {item.title}
+                                    </h4>
                                 </a>
-                                <hr></hr>
                                 <p className="item-meta">{item.year}</p>
                                 <p className="item-meta">{item.type}</p>
                             </div>
-                        );
-                    }
+                        </div>
+                    );
                 })}
             </div>
         </div>
