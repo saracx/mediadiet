@@ -73,6 +73,7 @@ a:focus {
 
 p {
     margin: 0.7rem auto;
+    width: 550px;
 }
 
 h1 {
@@ -120,6 +121,8 @@ input:focus {
 button {
     width: 120px;
     border: 0px;
+    margin-top: 1rem;
+    border-bottom: 1px solid var(--highlight-color);
 }
 
 h2,
@@ -130,6 +133,17 @@ h3 {
     text-align: left;
     font-size: 0.8rem;
     font-weight: 300;
+}
+
+select {
+    border: 0px;
+    border-bottom: 1px solid var(--color2);
+    padding: 0.4rem;
+}
+
+input {
+    border: 0px;
+    border-bottom: 1px solid var(--color2);
 }
 
 body {

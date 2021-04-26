@@ -61,12 +61,12 @@ export default function Selectcreator() {
 
     return (
         <section id="playlist-selector">
-            <h3>
+            <h2>
                 Select items for{" "}
                 {playlist && (
                     <span className="playlist-name">{playlist.title} 👇</span>
                 )}
-            </h3>
+            </h2>
             <Selector key="1"></Selector>
             <Selector key="2"></Selector>
             <Selector key="3"></Selector>

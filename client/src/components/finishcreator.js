@@ -50,9 +50,7 @@ export default function Finishcreator() {
     return (
         <section id="finish">
             <Preview></Preview>
-            <button onClick={(e) => handleClick(e)}>
-                Publish this playlist
-            </button>
+            <button onClick={(e) => handleClick(e)}>👉 Publish</button>
             {error && <p className="error">{error}</p>}
         </section>
     );

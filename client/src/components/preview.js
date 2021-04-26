@@ -14,6 +14,8 @@ export default function Preview() {
     const playlist = useSelector((state) => state && state.playlist);
     const items = useSelector((state) => state && state.items);
 
+    console.log(items);
+
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());
     }, []);
@@ -26,8 +28,10 @@ export default function Preview() {
         <div className="preview-wrapper">
             {items && (
                 <h2>
-                    Hey man, that's a cool playlist!{" "}
-                    <span className="highlight">{playlist.title}</span>
+                    Your mixtape: &nbsp;{" "}
+                    <span className="highlight">
+                        <span class="playlist-name">{playlist.title}</span>
+                    </span>
                 </h2>
             )}
             <div className="preview">

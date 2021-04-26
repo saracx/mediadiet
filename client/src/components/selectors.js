@@ -55,6 +55,7 @@ export default function Selector() {
     const selectItem = (item) => {
         // clean up selected item object before sending it to local and global state
         let cleanedItem = cleanUp(item);
+        console.log("cleanedItem", cleanedItem);
         // console.log("cleaned Item", cleanedItem);
         dispatch(addNewItem(cleanedItem));
         setSelectedItem(cleanedItem);

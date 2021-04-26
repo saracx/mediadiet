@@ -1,7 +1,6 @@
 export function cleanUp(item) {
     if (item.printType) {
         const { Title, authors, Poster, infoLink, publishedDate } = item;
-
         let cleanedUpItem = {
             type: "book",
             title: Title,
@@ -10,9 +9,10 @@ export function cleanUp(item) {
             url: infoLink,
             year: publishedDate,
         };
-
         return cleanedUpItem;
-    } else {
+    }
+
+    if (item.imdbID) {
         const { Title, Year, imdbID, Poster } = item;
 
         let cleanedUpItem = {
@@ -24,6 +24,12 @@ export function cleanUp(item) {
         };
         return cleanedUpItem;
     }
+
+    if (item.artist) {
+        console.log("ended in artist block");
+        let cleanedUpItem = { ...item, image: item.Poster, title: item.Title };
+        return cleanedUpItem;
+    }
 }
 
 export function cleanUpResults(array) {
@@ -33,7 +39,10 @@ export function cleanUpResults(array) {
         let Poster = item.album.images[0].url;
         let Title = item.name;
         let artist = item.artists[0];
-        newArray.push({ Title, Poster, artist });
+        let type = "music";
+        let url = item.external_urls.spotify;
+        let year = item.album.release_date;
+        newArray.push({ Title, Poster, artist, type, url, year });
     });
     console.log("newarray", newArray);
 
