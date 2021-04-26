@@ -51,7 +51,6 @@ textarea:focus {
 h3 {
     color: var(--main-text-color);
     font-size: 1rem;
-    text-align: center;
 }
 
 .select-form {
@@ -243,7 +242,7 @@ h4 {
 
 /* View all playlists */
 
-#mixtape-grid {
+.mixtape-grid {
     display: grid;
     width: 100%;
 
@@ -274,10 +273,10 @@ h4 {
 
 .mixtape3 {
     width: 220px;
-    color: white;
     background: url("../mixtape3.jpeg");
     background-size: cover;
     position: relative;
+    color: black;
 }
 
 .mixtape-title2 {
@@ -289,13 +288,12 @@ h4 {
     position: absolute;
     top: 70px;
     left: 27px;
-    background-color: rgba(90, 120, 255, 0.7);
-    /* left: 150px; */
     text-align: center;
 }
 
 .mixtape-title {
     font-family: var(--handwriting1);
+    color: var(--link-hover-color);
     position: absolute;
     top: 40%;
     left: 30%;

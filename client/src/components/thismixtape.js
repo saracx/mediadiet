@@ -40,7 +40,6 @@ export default function ThisMixtape() {
     return (
         <div id="my-playlists">
             <h2>
-                Your playlist{" "}
                 <span className="highlight">
                     {meta.title} ({items.length})
                 </span>

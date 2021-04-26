@@ -26,6 +26,20 @@ export function cleanUp(item) {
     }
 }
 
+export function cleanUpResults(array) {
+    let newArray = [];
+    console.log(array[0]);
+    array.map((item) => {
+        let Poster = item.album.images[0].url;
+        let Title = item.name;
+        let artist = item.artists[0];
+        newArray.push({ Title, Poster, artist });
+    });
+    console.log("newarray", newArray);
+
+    return newArray;
+}
+
 export function randomBG(min, max) {
     let randomNumber = Math.round(Math.random() * (max - min) + min);
 

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
+import { randomBG } from "../utils";
 
 export default function MyMixtapes() {
     const user = useSelector((state) => state && state.user);
@@ -46,62 +47,54 @@ export default function MyMixtapes() {
     } else
         return (
             <div id="my-playlists">
-                <h2 className="welcome-landing">
-                    Hello {user && user.first} {user && user.id}
-                </h2>
-                Here is a list of your playlists! We do not have any pictures
-                yet, but we're going to change that soon. :)
-                <h3>Published tapes</h3>
-                {mixtapes &&
-                    mixtapes.map((tape, i) => {
-                        return (
-                            <div className="mixtape" key={tape.id}>
-                                <details>
-                                    <summary>
-                                        <Link
-                                            params={tape.id}
-                                            to={{
-                                                pathname: `/mixtape/${tape.id}`,
-                                                mix_id: tape.id,
-                                            }}
-                                        >
-                                            {" "}
-                                            {tape.title}
-                                        </Link>
-                                    </summary>
-                                    {tape.description}
-                                    <br></br>
-                                    {tape.created_at.toLocaleString()}
-                                </details>
-                            </div>
-                        );
-                    })}
-                <h3>Your drafts</h3>
-                {drafts &&
-                    drafts.map((tape, i) => {
-                        return (
-                            <div className="mixtape" key={tape.id}>
-                                <details>
-                                    <summary>
-                                        <Link
-                                            params={tape.id}
-                                            to={{
-                                                pathname: `/mixtape/${tape.id}`,
-                                                mix_id: tape.id,
-                                            }}
-                                        >
-                                            {" "}
-                                            {tape.title}
-                                        </Link>
-                                    </summary>
+                <h2>{user && user.first} Mixtapes</h2>
 
-                                    {tape.description}
-                                    <br></br>
-                                    {tape.created_at.toLocaleString()}
-                                </details>
-                            </div>
-                        );
-                    })}
+                <h3>Published</h3>
+                <div className="mixtape-grid">
+                    {mixtapes &&
+                        mixtapes.map((tape, i) => {
+                            return (
+                                <div className={randomBG(1, 100)} key={tape.id}>
+                                    <p className="mixtape mixtape-title2">
+                                        <Link
+                                            params={tape.id}
+                                            to={{
+                                                pathname: `/mixtape/${tape.id}`,
+                                                mix_id: tape.id,
+                                            }}
+                                        >
+                                            {tape.title}
+                                        </Link>
+                                    </p>
+                                </div>
+                            );
+                        })}
+                </div>
+                <h3>Your drafts</h3>
+                <div className="mixtape-grid">
+                    {drafts
+                        ? drafts.map((tape, i) => {
+                              return (
+                                  <div
+                                      className={randomBG(1, 100)}
+                                      key={tape.id}
+                                  >
+                                      <p className="mixtape mixtape-title2">
+                                          <Link
+                                              params={tape.id}
+                                              to={{
+                                                  pathname: `/mixtape/${tape.id}`,
+                                                  mix_id: tape.id,
+                                              }}
+                                          >
+                                              {tape.title}
+                                          </Link>
+                                      </p>
+                                  </div>
+                              );
+                          })
+                        : "No drafts yet!"}
+                </div>
             </div>
         );
 }

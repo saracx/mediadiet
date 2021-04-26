@@ -35,7 +35,7 @@ export default function AllMixtapes() {
             <div id="all-playlists">
                 <h2 className="welcome-landing">All MIXTAPES</h2>
 
-                <div id="mixtape-grid">
+                <div className="mixtape-grid">
                     {allMixtapes &&
                         allMixtapes.map((tape, i) => {
                             return (

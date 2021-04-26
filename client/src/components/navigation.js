@@ -1,16 +1,11 @@
 import "../css/nav.css";
-
+import Logout from "../components/logout";
 import { Link } from "react-router-dom";
 
 export default function Navigation() {
     return (
         <section className="nav-links">
             <ul>
-                <li>
-                    <Link className="" to={"/"}>
-                        Welcome
-                    </Link>{" "}
-                </li>
                 <li>
                     <Link className="" to={"/create-playlist#"}>
                         Create Mixtape
@@ -26,6 +21,7 @@ export default function Navigation() {
                         All mixtapes
                     </Link>{" "}
                 </li>
+                <Logout></Logout>
             </ul>
         </section>
     );

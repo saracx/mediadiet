@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { addNewItem, deleteItem } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanUp } from "../utils";
+import { cleanUp, cleanUpResults } from "../utils";
 
 import { movieRequests } from "../requests/movies";
 import { bookRequests } from "../requests/books";
+import { spotifyRequest } from "../requests/spotify";
 
 export default function Selector() {
     const noImage = "/no-results.png";
@@ -37,6 +38,13 @@ export default function Selector() {
         if (option == "books") {
             bookRequests(query, abort, (res) => {
                 setResults(res);
+            });
+        }
+        if (option == "music") {
+            spotifyRequest(query, abort, (res) => {
+                let cleanedRes = cleanUpResults(res);
+                setResults(cleanedRes);
+                console.log("cleaned Res", cleanedRes);
             });
         }
         return () => {
@@ -78,6 +86,7 @@ export default function Selector() {
 
                     <option>books</option>
                     <option>movies</option>
+                    <option>music</option>
                 </select>
             ) : (
                 <p>{selectedItem.title.substring(0, 50)}</p>

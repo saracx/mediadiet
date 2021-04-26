@@ -5,48 +5,42 @@
     z-index: 300;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     /* padding: 2rem 1.2rem; */
-    /* flex-direction: column; */
+    flex-direction: column;
     margin: 0;
-    height: 10%;
-    width: 100vw;
+    height: 100%;
+    width: 15vw;
     position: fixed;
     left: 0px;
     top: 0;
+    padding: 1rem;
     box-shadow: var(--box-shadow);
-}
-
-.nav-links {
-    display: flex;
-    left: 15%;
-    position: absolute;
-    width: 100%;
+    background-color: white;
     padding: 0.5rem;
 }
 
 .nav-links > ul {
-    display: inline-block;
+    display: block;
     list-style-type: none;
+    margin: 0;
 }
 
 .nav-links li {
-    line-height: 32px;
-    display: inline;
-    margin-left: 1rem;
+    /* line-height: 32px; */
+    font-size: 1.9rem;
     width: 120px;
-    /* height: 36px; */
-    text-align: center;
+    text-transform: uppercase;
+
     outline: none;
     font-weight: 500;
-    padding: 0 0.3rem;
-    font-family: var(--meta-font);
-    border-bottom: 1px solid var(--border-color);
+    font-family: var(--nav-font);
+    border-bottom: 2px solid var(--border-color);
     background-color: transparent;
 }
 
 .nav-links a {
-    font-size: 0.8rem;
+    font-size: larger;
     color: var(--link-color);
     text-decoration: none;
     transition: 0.5s;
@@ -58,11 +52,11 @@
 }
 
 .logo-nav {
-    width: 70%;
-    display: flex;
-    padding: 0rem;
+    padding: 0.3rem;
     align-items: center;
     outline: none;
+    width: 15vw;
+    margin: 2rem;
 }
 
 .logo-nav:focus {
@@ -70,17 +64,16 @@
 }
 
 .logo-nav > img {
-    margin-top: 1rem;
-    width: 45px;
-    transform: rotate(7deg);
+    width: 100%;
+    transform: rotate(2deg);
     transition: 2s;
 }
 
 .logo-nav > img:hover {
     transform: rotate(360deg);
     transition: 0.5s;
-    filter: invert(76%) sepia(61%) saturate(377%) hue-rotate(97deg)
-        brightness(102%) contrast(83%);
+    filter: invert(21%) sepia(78%) saturate(5192%) hue-rotate(343deg)
+        brightness(98%) contrast(91%);
 }
 /*  .profile-img {
     margin: 1rem 0;

@@ -1,5 +1,7 @@
 @import url("https://use.typekit.net/nyf7ylr.css");
 
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Just+Another+Hand&family=Rock+Salt&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Schoolbell&display=swap");
 
 * {
@@ -9,25 +11,27 @@
 
 :root {
     --main-bg-color: white;
-    --header-font: itc-avant-garde-gothic-pro, sans-serif;
-    --subtitle-font: itc-avant-garde-gothic-pro, sans-serif;
+    --header-font: Arial, sans-serif;
+    --subtitle-font: Arial, sans-serif;
     --main-text-color: #111;
-    --main-font: ibm-plex-mono, sans-serif;
+    --main-font: Arial;
     --main-font-size: 0.8rem;
     --small: 0.7rem;
-    --highlight-text-color: #6e1fff;
-    --link-color: #694dff;
-    --meta-font: ibm-plex-mono, sans-serif;
+    --highlight-text-color: #ea2d32;
+    --link-color: black;
+    --meta-font: Arial;
     --grey: #666;
-    --highlight-color: #fec1ee;
-    --button-color: #666;
-    --border-color: #e5e5e5;
+    --highlight-color: #b3d635;
+    --button-color: #b4d631;
+    --border-color: #b4d631;
     --purple: #694dff;
-    --border-radius: 24px;
-    --box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 10%);
-    --link-hover-color: rgba(90, 120, 255, 1);
+    --nav-font: "Arial Black";
+
+    --border-radius: 2px;
+
+    --link-hover-color: #ef233e;
     --meta-color: #666;
-    --error-color: #fe4747;
+    --error-color: #ef233e;
     --handwriting1: "Schoolbell", cursive;
 }
 
@@ -126,6 +130,7 @@ h3 {
     text-transform: capitalize;
     font-size: 1.6rem;
     color: var(--highlight-text-color);
+    text-align: left;
 }
 
 body {
@@ -134,7 +139,7 @@ body {
     color: var(--main-text-color);
     font-family: var(--main-font);
     font-size: var(--main-font-size);
-    width: 80vw;
+    width: 100vw;
 }
 
 .highlight {
@@ -145,13 +150,11 @@ body {
 
 #app,
 #registration {
-    margin: 6rem 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     /* border: 1px solid black; */
-    min-height: 80vh;
 }
 
 #main {
