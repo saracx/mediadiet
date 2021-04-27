@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Share } from 'react-twitter-widgets'
 
 export default function ThisMixtape({ first }) {
     const { id } = useParams();
