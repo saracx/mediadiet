@@ -62,9 +62,6 @@ h3 {
     margin: 2rem auto;
 }
 
-.select-form > input {
-    /* width: 50px; */
-}
 
 .select-form > p {
     width: 250px;
@@ -73,24 +70,10 @@ h3 {
     text-align: center;
 }
 
-.description-selection {
-    /* height: 2rem;
-    width: 100%;
-    border: 1px solid var(--color1); */
-}
-
-.select-form-buttons {
-    /* margin-top: 2rem;
-    display: flex;
-    width: 100%; */
-}
 
 .garbage {
     text-align: center;
     cursor: pointer;
-}
-
-#playlist-selector {
 }
 
 .playlist-name {
@@ -212,11 +195,11 @@ li {
 
 .small-image {
     height: 120px;
-    width: 50px;
-    min-width: 140px;
+    /* width: 50px; */
+    /* min-width: 140px; */
     object-fit: contain;
     border: 0px;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 h4 {
@@ -238,9 +221,16 @@ h4 {
     margin: 0.1rem;
 }
 
+.description-meta {
+    font-family: var(--meta-font);
+    font-size: 0.6rem;
+    margin: 0;
+    padding: 0.3rem 0;
+}
+
 .item-info {
     min-height: 120px;
-    width: 100%;
+    /* width: 100%; */
     padding: 1rem;
     margin: 0;
 }
@@ -389,4 +379,46 @@ button.required:focus, button.required:hover {
  
     color: var(--highlight-color);
     border-bottom: 1px solid var(--highlight-color)
+}
+
+.new-user {
+    font-weight: 200;
+    font-size: 0.8rem;
+    color: black;
+    padding: 0.2rem 0;
+    font-family: var(--header-font);
+    margin-bottom: 2rem;
+}
+
+.new-user a {
+    color: var(--link-hover-color);
+}
+
+ .twitter-share {
+    position: relative;
+    height: 20px;
+    box-sizing: border-box;
+    padding: 2px 8px 2px 6px;
+    background-color: #1b95e0;
+    color: #fff;
+    border-radius: 3px;
+    font-weight: 300;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 0.7rem;
+   
+  }
+
+p .twitter-share  {
+    color: white;
+    font-family: Arial;
+
+}
+
+.twitter-share:hover  {
+    color: #1b95e0;
+    font-family: Arial;
+    background-color: white;
+    border: 1px solid #1b95e0;
+
 }

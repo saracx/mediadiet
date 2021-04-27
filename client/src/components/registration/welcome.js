@@ -3,6 +3,7 @@ import { HashRouter, Route } from "react-router-dom";
 import Intro from "./intro";
 import Signup from "./signup";
 import Login from "./login";
+import ResetPass from "./reset"
 
 export default function Welcome() {
     const logo = "tape.png";
@@ -14,11 +15,13 @@ export default function Welcome() {
                 <Route exact path="/" component={Signup} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
+                 <Route path="/password/reset" component={ResetPass} />
             </HashRouter>
 
             <div className="registration-links">
                 <a href="/twitter">Log in with Twitter</a>
             </div>
+           
         </div>
     );
 }

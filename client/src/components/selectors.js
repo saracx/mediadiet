@@ -64,6 +64,10 @@ export default function Selector() {
         setOption("");
     };
 
+    // draft considerations: store all selected items in db.
+    // in startselector, get last playlist draft, make db query to items and return an array of items (rows)
+    // then pass the items as props to the selectors by mapping over them and creating a selector for each item
+
     const handleDeleteItem = () => {
         setQuery(null);
         setGarbage(false);

@@ -8,6 +8,9 @@ import MyMixtapes from "./mymixtapes.js";
 import ThisMixtape from "./thismixtape";
 import AllMixtapes from "./allmixtapes";
 
+
+
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { useState, useEffect } from "react";
@@ -26,7 +29,7 @@ export default function App() {
         <div id="app">
             <BrowserRouter>
                 <nav id="navigation">
-                    <Navigation></Navigation>
+                    <Navigation user={user}></Navigation>
                 </nav>
                 <div id="main">
                     <Route exact path="/" render={() => <Landingscreen />} />
@@ -42,6 +45,7 @@ export default function App() {
                     />
                 </div>
             </BrowserRouter>
+            <span id="test">this is a test</span>
         </div>
     );
 }

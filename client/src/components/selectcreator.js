@@ -31,7 +31,7 @@ export default function Selectcreator() {
     // });
 
     const handleClick = async () => {
-        if (items.length <= 3) {
+        if (items.length < 3) {
             setError(
                 "Sorry, you have to select at least three items for your playlist!"
             );
@@ -61,7 +61,7 @@ export default function Selectcreator() {
 
     return (
         <section id="playlist-selector">
-        
+
             <h2>
                 Select items for{" "}
                 {playlist && (

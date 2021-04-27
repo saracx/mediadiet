@@ -14,7 +14,7 @@ const {
 
 const register = require("./routes/register");
 const login = require("./routes/login");
-// const password = require("./routes/pwreset");
+const password = require("./routes/pwreset");
 const welcome = require("./routes/welcome");
 const userRouter = require("./routes/user");
 const playlistRouter = require("./routes/playlist");
@@ -64,7 +64,7 @@ app.use(
 app.use("/signup", register);
 // app.use("/delete", deleteUser);
 app.use("/login", login);
-// app.use("/password/reset", password);
+app.use("/password/reset", password);
 app.use("/welcome", welcome);
 // app.use("/upload", upload);
 // app.use("/bio", bio);
@@ -75,6 +75,12 @@ app.use("/api/mixtape", mixtapeRouter);
 app.use("/getToken", spotifyRouter); //
 app.use("/twitter", twitterAuth); //
 app.get("/mixtape/:id", (req, res) => {
+    console.log("At mixtape")
+        res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+
+})
+
+app.get("/mixtapes/all", (req, res) => {
     console.log("At mixtape")
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 
