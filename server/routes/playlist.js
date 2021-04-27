@@ -7,6 +7,7 @@ const {
     getThisPlaylist,
     getAllMixtapesForThisUser,
     publishThisMixtape,
+    queryPostItemDraft
 } = require("../sql/db");
 const { requireLoggedInUser } = require("../middleware/auth");
 
@@ -113,10 +114,25 @@ const getFinalMixtapes = async (req, res) => {
     }
 };
 
+
+const postItemDraft = async (req, res) => {
+    const { mixtape_id, cleanedItem } = req.body;
+    console.log("playlist id and item on server", mixtape_id, cleanedItem);
+    let {type, title, image, url, year, author } = cleanedItem;
+
+    const {rows} = await queryPostItemDraft(type, title, mixtape_id, image, url, year, author)
+
+    // Insert into db with DRAFT = TRUE
+    // return item id
+
+    res.json({ success: true, item: rows[0] });
+};
+
 router.get("/:id", requireLoggedInUser, getFinalMixtapes);
 router.post("/", requireLoggedInUser, playlistDraft);
 router.get("/", requireLoggedInUser, getPlaylistDraft);
 router.post("/items", requireLoggedInUser, postItems);
+router.post("/itemDraft", requireLoggedInUser, postItemDraft);
 router.post("/publish/:id", requireLoggedInUser, publishMixtape);
 
 module.exports = router;

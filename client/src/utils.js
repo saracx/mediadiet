@@ -26,7 +26,6 @@ export function cleanUp(item) {
     }
 
     if (item.artist) {
-        console.log("ended in artist block");
         let cleanedUpItem = { ...item, image: item.Poster, title: item.Title };
         return cleanedUpItem;
     }
@@ -34,7 +33,6 @@ export function cleanUp(item) {
 
 export function cleanUpResults(array) {
     let newArray = [];
-    console.log(array[0]);
     array.map((item) => {
         let Poster = item.album.images[0].url;
         let Title = item.name;
@@ -44,7 +42,7 @@ export function cleanUpResults(array) {
         let year = item.album.release_date;
         newArray.push({ Title, Poster, artist, type, url, year });
     });
-    console.log("newarray", newArray);
+
 
     return newArray;
 }

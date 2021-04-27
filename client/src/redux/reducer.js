@@ -25,6 +25,7 @@ export default function (state = {}, action) {
     }
 
     if (action.type == "ADD_ITEM") {
+        console.log("item id in reducer", action.items.id)
         state = {
             ...state,
             items: [...state.items, action.items],

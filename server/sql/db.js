@@ -126,3 +126,11 @@ module.exports.getAllMixtapesForThisUser = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+
+module.exports.queryPostItemDraft = function (type, title, id, image, url, year, author) {
+    const query = `INSERT INTO items
+    (type, title, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+    const params = [type, title, id, image, url, year, author];
+    return db.query(query, params);
+};

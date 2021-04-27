@@ -30,7 +30,7 @@ export default function Preview() {
                 <h2>
                     Your mixtape: &nbsp;{" "}
                     <span className="highlight">
-                        <span class="playlist-name">{playlist.title}</span>
+                        <span className="playlist-name">{playlist.title}</span>
                     </span>
                 </h2>
             )}
