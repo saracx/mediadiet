@@ -126,3 +126,27 @@ module.exports.getAllMixtapesForThisUser = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+
+module.exports.queryPostItemDraft = function (type, title, id, image, url, year, author) {
+    const query = `INSERT INTO items
+    (type, title, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+    const params = [type, title, id, image, url, year, author];
+    return db.query(query, params);
+};
+
+
+module.exports.queryDeleteSingleItem = function (id) {
+    const query = `DELETE FROM items
+    WHERE id = $1;`;
+    const params = [id];
+    return db.query(query, params);
+};
+
+
+module.exports.queryGetItems = function (id) {
+    const query = `SELECT * FROM items
+    WHERE mixtape_id = $1 AND draft = true;`;
+    const params = [id];
+    return db.query(query, params);
+};

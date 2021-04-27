@@ -66,10 +66,10 @@ a:focus {
 
 .error {
     color: var(--error-color);
-    margin: 1rem 2rem 2rem 0;
-    text-align: center;
-    transition: 1s;
     font-size: var(--small);
+    margin: 1rem;
+    padding: 0.5rem;
+
     width: 100%;
 }
 

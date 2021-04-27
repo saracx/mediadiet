@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+<<<<<<< HEAD
+=======
+
+>>>>>>> draft
 
 export default function ThisMixtape({ first }) {
     const { id } = useParams();

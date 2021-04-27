@@ -54,12 +54,14 @@ h3 {
 }
 
 .select-form {
-    width: 100%;
+   
+    width: 80%;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2rem auto;
+    margin: 0.5rem 0;
+    padding: 0;
 }
 
 
@@ -67,12 +69,23 @@ h3 {
     width: 250px;
     color: var(--color1);
     font-weight: 700;
-    text-align: center;
+
+   
 }
 
+.finish-button {
+    color: var(--color2);
+    border-bottom: 1px solid var(--color2);
+}
+
+.finish-button:hover, .finish-button:focus {
+    color: var(--highlight-color);
+    border-bottom: 1px solid var(--highlight-color);
+}
 
 .garbage {
-    text-align: center;
+    
+    text-align: right;
     cursor: pointer;
 }
 
@@ -84,9 +97,9 @@ h3 {
 .search-list {
     position: relative;
     width: 250px;
-
     text-align: center;
 }
+
 .search-list > input {
     width: 250px;
 }
@@ -96,6 +109,7 @@ h3 {
     width: 250px;
     margin: 0;
     padding: 0;
+    background-color: white;
 }
 
 .search-list li {
@@ -107,10 +121,11 @@ h3 {
     margin: 0.4rem auto;
     text-align: left;
     cursor: pointer;
+
 }
 
 .search-list li:hover {
-    background-color: var(--color2);
+    color: var(--highlight-color)
 }
 
 .small {
@@ -162,6 +177,9 @@ li {
 
 .selected-item {
     width: 200px;
+    margin: 2rem;
+    font-family: var(--handwriting1);
+    font-size: 1.4rem;
 }
 
 /* Playlist view */

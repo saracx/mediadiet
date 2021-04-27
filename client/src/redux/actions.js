@@ -67,11 +67,21 @@ export async function addNewItem(item) {
 }
 
 export async function deleteItem(item) {
-    console.log(item);
-    return {
-        type: "DELETE_ITEM",
-        item,
-    };
+    let {id} = item
+
+    try {
+        const { data } = await axios.post("/api/playlist/deleteItem/" + id);
+        if (data.success) {
+            return {
+            type: "DELETE_ITEM",
+            item
+            }
+        }
+    }
+        catch (err) {
+        console.log("caught an err in deleteItem", err)
+    }
+       
 }
 
 export async function receiveFinalMixtapes(id) {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { addNewItem, deleteItem } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUp, cleanUpResults } from "../utils";
+import axios from "../axios";
 
 import { movieRequests } from "../requests/movies";
 import { bookRequests } from "../requests/books";
@@ -18,6 +19,16 @@ export default function Selector() {
     const [selectedItem, setSelectedItem] = useState();
     const [garbage, setGarbage] = useState(false);
 
+    // useEffect(() => {
+    //     if (item) {
+    //         setSelectedItem(item)
+    //     }
+    // }, []);
+
+    // console.log(selectedItem)
+
+   let mixtape_id = playlist.id;
+
     const handleChange = (e, task) => {
         if (task == "selection") {
             setOption(e.target.value);
@@ -27,6 +38,8 @@ export default function Selector() {
             setQuery(e.target.value);
         }
     };
+
+    
 
     useEffect(() => {
         let abort;
@@ -44,7 +57,7 @@ export default function Selector() {
             spotifyRequest(query, abort, (res) => {
                 let cleanedRes = cleanUpResults(res);
                 setResults(cleanedRes);
-                console.log("cleaned Res", cleanedRes);
+                
             });
         }
         return () => {
@@ -52,13 +65,15 @@ export default function Selector() {
         };
     }, [query]);
 
-    const selectItem = (item) => {
+    const selectItem = async (item) => {
         // clean up selected item object before sending it to local and global state
         let cleanedItem = cleanUp(item);
-        console.log("cleanedItem", cleanedItem);
         // console.log("cleaned Item", cleanedItem);
-        dispatch(addNewItem(cleanedItem));
-        setSelectedItem(cleanedItem);
+        dispatch(addNewItem(cleanedItem)); 
+
+         const { data } = await axios.post("/api/playlist/itemDraft", { mixtape_id, cleanedItem });
+    
+        setSelectedItem(data.item)
         setQuery(null); // close results window
         setGarbage(true);
         setOption("");
@@ -69,6 +84,7 @@ export default function Selector() {
     // then pass the items as props to the selectors by mapping over them and creating a selector for each item
 
     const handleDeleteItem = () => {
+        console.log("selected Item?", selectedItem)
         setQuery(null);
         setGarbage(false);
         dispatch(deleteItem(selectedItem)).then(() => {
@@ -105,21 +121,22 @@ export default function Selector() {
                         onChange={(e) => handleChange(e, "search")}
                         placeholder={
                             selectedItem && query
-                                ? selectedItem[0].title
+                                ? selectedItem.title
                                 : "Search"
                         }
                     ></input>
                 )}
-                {garbage && selectedItem ? (
+                {garbage && selectedItem ? 
                     <>
                         <img
                             className="preview-image"
-                            src={selectedItem.image || selectedItem.image}
-                        ></img>
+                            src={selectedItem.image || noImage}
+                        ></img> 
+                        
                     </>
-                ) : (
+                : 
                     ""
-                )}
+                }
 
                 <ul>
                     {results && query

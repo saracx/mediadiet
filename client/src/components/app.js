@@ -45,7 +45,6 @@ export default function App() {
                     />
                 </div>
             </BrowserRouter>
-            <span id="test">this is a test</span>
         </div>
     );
 }
