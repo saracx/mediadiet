@@ -11,7 +11,7 @@ const { addUser, loginUserTwitter } = require("../sql/db");
      callbackUrl = "https://mediadiet.herokuapp.com/twitter/callback";
  } else {
      secrets = require("../../secrets.json"); // in dev they are in secrets.json which is listed in .gitignore
-     callbackUrl = "http://127.0.0.1:3000/twitter/callback";
+     callbackUrl = "http://localhost:3000/twitter/callback";
  }
 
  const tw = new LoginWithTwitter({
@@ -37,6 +37,7 @@ const { addUser, loginUserTwitter } = require("../sql/db");
    }, req.session.tokenSecret, (err, user) => {
      if (err) {
        // Handle the error your way
+       console.log("err when trying to verify user at twitter login", err)
      }
 
      console.log(user)

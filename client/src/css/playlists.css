@@ -9,10 +9,6 @@
 .forms {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
     width: 550px;
 }
 
@@ -21,10 +17,11 @@
     padding: 0.2rem;
 }
 
-.labels {
+h3.labels {
     color: var(--main-text-color);
     font-size: 0.8rem;
-    margin: 0.2rem 1rem;
+    margin: 2rem 1rem 0rem;
+    text-align: left;
 }
 
 li {
@@ -32,6 +29,7 @@ li {
 }
 
 textarea {
+    color: var(--highlight-color);
     height: 100px;
     width: 100%;
     text-align: left;
@@ -39,11 +37,15 @@ textarea {
     resize: none;
     line-height: normal;
     padding: 1rem;
+    font-size: 0.7rem;
+    border: 0;
+    border-bottom: 1px solid var(--color2)
 }
 
 textarea:focus {
     outline: none;
-    border: 1px solid var(--color1);
+    border: 0px;
+    border-bottom: 1px solid var(--highlight-color);
 }
 
 h3 {
@@ -135,12 +137,6 @@ h3 {
     margin: 0 1rem;
 }
 
-.button-wrapper {
-    margin: 0 auto;
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-}
 
 select {
     width: 200px;
@@ -148,10 +144,9 @@ select {
 }
 
 .add-more {
+    margin: 0 1.3rem;
 }
 
-.finish-button {
-}
 
 .single-items {
     flex-wrap: wrap;
@@ -366,4 +361,32 @@ p.mixtape-title2 a:hover {
     font-family: var(--handwriting1);
     bottom: 0px;
     right: 0px;
+}
+
+li.requirements {
+    font-family: var(--header-font);
+    color: var(--color1);
+    font-weight: 200;
+    list-style-type: "_";
+    margin-left: 0.2rem;
+}
+
+input.required {
+    text-align: left;
+    color: var(--highlight-color);
+    padding: 1rem;
+    font-size: 0.7rem;
+}
+
+button.required {
+    width: 100px;
+    background-color: transparent;
+    color: var(--color2);
+    border-bottom: 1px solid var(--color2)
+}
+
+button.required:focus, button.required:hover {
+ 
+    color: var(--highlight-color);
+    border-bottom: 1px solid var(--highlight-color)
 }

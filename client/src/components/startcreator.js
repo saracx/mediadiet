@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "../css/playlists.css";
 import { addPlaylist } from "../redux/actions";
 import { Link } from "react-router-dom";
+import User from "./user"
 
 export default function Startcreator() {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state && state.user);
 
-    const [input, setInput] = useState({});
+    const [input, setInput] = useState();
     const [error, setError] = useState(false);
 
     const handleChange = (e) => {
@@ -21,30 +23,36 @@ export default function Startcreator() {
     };
 
     const handleClick = (e) => {
-        if (!input || !input.title || !input.description) {
-            return setError("Please fill out all required fields");
-        } else {
+        // console.log(input)
+        
+        if (input.description && input.title) {
+           
             dispatch(addPlaylist(input));
             setError(false);
+        
+            } else {
+                 e.preventDefault();
+                console.log("Error")
+            return setError("Please fill out all required fields");
+        
+            
         }
     };
 
     return (
         <section id="intro">
+        
             <h2>Create your playlist</h2>
-            <p>
-                This is where the magic happens: you can decide what ends up on
-                your mixed-media playlist, if it has a common theme or idea or
-                if it's super randomly structured. Basically, you can do
-                whatever you want if you regard the requirements:
-                <br></br>
-            </p>
-            <ul>
-                <li>Minimum items on playlists: 3</li>
-                <li>Maximum items on playlists: 10</li>
+            <p className="intro">
+                This is where the magic happens. Requirements:
+            
+                <li className="requirements">Title & description are required!</li>
+                <li className="requirements">Minimum items on playlists: 3</li>
+                <li className="requirements">Maximum items on playlists: 10</li>
 
-                <li>Title & description are required!</li>
-            </ul>
+                
+          
+            </p>
             <section className="forms">
                 <h3 onChange={(e) => handleChange(e)} className="labels">
                     Title*
@@ -63,14 +71,14 @@ export default function Startcreator() {
                     placeholder="Your description here"
                 ></textarea>
                 {error && <p className="error">{error}</p>}
-                <Link to="/select">
+                {input && <Link to="/select">
                     <button
                         onClick={(e) => handleClick(e)}
                         className="required"
                     >
                         Next
                     </button>
-                </Link>
+                </Link>}
             </section>
         </section>
     );

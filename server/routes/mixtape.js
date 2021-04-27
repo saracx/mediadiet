@@ -44,7 +44,7 @@ const getAllMixtapes = async (req, res) => {
     }
 };
 
-router.get("/all", requireLoggedInUser, getAllMixtapes);
-router.get("/:id", requireLoggedInUser, getThisMixtape);
+router.get("/all", getAllMixtapes);
+router.get("/:id", getThisMixtape);
 
 module.exports = router;

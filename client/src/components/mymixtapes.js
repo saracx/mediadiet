@@ -4,6 +4,8 @@ import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
 import { randomBG } from "../utils";
 
+import User from "./user"
+
 export default function MyMixtapes() {
     const user = useSelector((state) => state && state.user);
     const [mixtapes, setMixtapes] = useState([]);
@@ -47,7 +49,10 @@ export default function MyMixtapes() {
     } else
         return (
             <div id="my-playlists">
-                <h2>{user && user.first} Mixtapes</h2>
+            
+                {user &&
+            <User first={user.first}></User>}
+                        <p className="intro">Check out  all your published and drafted mixtapes</p>
 
                 <h3>Published</h3>
                 <div className="mixtape-grid">

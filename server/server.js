@@ -74,6 +74,11 @@ app.use("/api/playlist", playlistRouter); // generates the playlist, has to be r
 app.use("/api/mixtape", mixtapeRouter);
 app.use("/getToken", spotifyRouter); //
 app.use("/twitter", twitterAuth); //
+app.get("/mixtape/:id", (req, res) => {
+    console.log("At mixtape")
+        res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+
+})
 // app.use("/relationship", relationRouter);
 // app.use("/images", imageRouter);
 // app.use("/library", libraryRouter);

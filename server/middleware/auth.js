@@ -10,3 +10,4 @@ exports.requireLoggedInUser = (req, res, next) => {
     }
     next();
 };
+
