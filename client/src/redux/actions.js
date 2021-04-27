@@ -17,7 +17,7 @@ export async function receiveUser() {
             user: data.user,
         };
     } catch (err) {
-        console.log("error in addUser action", err);
+        console.log("error in receiveUser action", err);
     }
 }
 

@@ -17,6 +17,12 @@ module.exports.loginUser = function (email) {
 };
 //
 
+module.exports.loginUserTwitter = function (token) {
+    const query = `SELECT * FROM users WHERE email = $1 `;
+    const params = [token];
+    return db.query(query, params);
+}
+
 // Reset Code & Password Change
 
 module.exports.addResetCode = function (email, code) {
