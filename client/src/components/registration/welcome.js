@@ -14,10 +14,11 @@ export default function Welcome() {
                 <Route exact path="/" component={Signup} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
-                <div id="o-auth">
-                    <span className="important-note">o auth here</span>
-                </div>
             </HashRouter>
+
+            <div className="registration-links">
+                <a href="/twitter">Log in with Twitter</a>
+            </div>
         </div>
     );
 }

@@ -27,7 +27,7 @@
     --color3: #333936;
     --border-radius: 2px;
 
-    --link-hover-color: #ef233e;
+    --link-hover-color: blue;
     --meta-color: #666;
     --error-color: #ef233e;
     --handwriting1: "Patrick Hand SC", cursive;
@@ -218,6 +218,10 @@ label,
 
 .registration-links a {
     font-size: var(--small);
+}
+
+.registration-links a:hover {
+    color: var(--link-hover-color);
 }
 
 #logout {
