@@ -7,7 +7,9 @@ const {
     getThisPlaylist,
     getAllMixtapesForThisUser,
     publishThisMixtape,
-    queryPostItemDraft
+    queryPostItemDraft,
+    queryDeleteSingleItem,
+    queryGetItems,
 } = require("../sql/db");
 const { requireLoggedInUser } = require("../middleware/auth");
 
@@ -128,11 +130,33 @@ const postItemDraft = async (req, res) => {
     res.json({ success: true, item: rows[0] });
 };
 
+const deleteSingleItem = async (req, res) => {
+    const { id } = req.params;
+    console.log("deleting item from server", id);
+
+    await queryDeleteSingleItem(id)
+
+    res.json({ success: true });
+};
+
+const getItems = async (req, res) => {
+    // gets items when they are in draft mode!
+    const { id } = req.params;
+    console.log("getting items for this playlist", id);
+    
+    const {rows} = await queryGetItems(id)
+    console.log("rows from db", rows)
+    res.json({ success: true, items: rows });
+};
+
+
 router.get("/:id", requireLoggedInUser, getFinalMixtapes);
 router.post("/", requireLoggedInUser, playlistDraft);
 router.get("/", requireLoggedInUser, getPlaylistDraft);
 router.post("/items", requireLoggedInUser, postItems);
+router.get("/items/:id", requireLoggedInUser, getItems);
 router.post("/itemDraft", requireLoggedInUser, postItemDraft);
 router.post("/publish/:id", requireLoggedInUser, publishMixtape);
+router.post("/deleteItem/:id", requireLoggedInUser, deleteSingleItem);
 
 module.exports = router;

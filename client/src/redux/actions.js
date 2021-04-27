@@ -67,12 +67,14 @@ export async function addNewItem(item) {
 }
 
 export async function deleteItem(item) {
+    let {id} = item
+
     try {
-        const { data } = await axios.post("/api/playlist/deleteItem");
+        const { data } = await axios.post("/api/playlist/deleteItem/" + id);
         if (data.success) {
             return {
             type: "DELETE_ITEM",
-            item,
+            item
             }
         }
     }

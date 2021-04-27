@@ -25,7 +25,7 @@ export default function (state = {}, action) {
     }
 
     if (action.type == "ADD_ITEM") {
-        console.log("item id in reducer", action.items.id)
+        
         state = {
             ...state,
             items: [...state.items, action.items],
@@ -33,6 +33,7 @@ export default function (state = {}, action) {
     }
 
     if (action.type == "DELETE_ITEM") {
+        console.log("Arrived at delete item, item was deleted")
         state = {
             ...state,
             items: state.items.filter((item) => item !== action.item),

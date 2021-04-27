@@ -8,7 +8,7 @@ import { movieRequests } from "../requests/movies";
 import { bookRequests } from "../requests/books";
 import { spotifyRequest } from "../requests/spotify";
 
-export default function Selector() {
+export default function Selector({item}) {
     const noImage = "/no-results.png";
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
@@ -19,7 +19,15 @@ export default function Selector() {
     const [selectedItem, setSelectedItem] = useState();
     const [garbage, setGarbage] = useState(false);
 
-   let mixtape_id = console.log(playlist.id)
+    useEffect(() => {
+        if (item) {
+            setSelectedItem(item)
+        }
+    }, [item]);
+
+    console.log(selectedItem)
+
+   let mixtape_id = playlist.id;
 
     const handleChange = (e, task) => {
         if (task == "selection") {
@@ -30,6 +38,8 @@ export default function Selector() {
             setQuery(e.target.value);
         }
     };
+
+    
 
     useEffect(() => {
         let abort;

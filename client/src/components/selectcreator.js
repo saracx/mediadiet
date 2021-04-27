@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Selector from "./selectors";
 import axios from "../axios";
 import Preview from "./preview";
+import Startcreator from "./startcreator";
 
 export default function Selectcreator() {
     const noImage = "/no-results.png";
@@ -16,12 +17,34 @@ export default function Selectcreator() {
     const items = useSelector((state) => state && state.items);
     let [children, setChildren] = useState([]);
     let [displayButton, setDisplayButton] = useState(true);
-
-    console.log("playlist in select", playlist);
+    let [drafts, setDraft] = useState();
 
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());
     }, []);
+
+
+    useEffect(() => {
+        playlist &&
+            (async () => {
+                try {
+                    const { data } = await axios.get(
+                        "/api/playlist/items/" + playlist.id
+                    );
+
+                    if (data.success && data.items) {
+                        setDraft(data.items)
+                        console.log("There should be nothing here", data.items)
+
+                    } else {
+                       console.log("Do nothing because there is no draft?")
+                    }
+                } catch (err) {
+                    console.log("There was an error at mixtapes", err);
+                }
+            })();
+    }, [items]);
+
 
     // useEffect(() => {
     //     window.addEventListener("beforeunload", (ev) => {
@@ -36,16 +59,13 @@ export default function Selectcreator() {
                 "Sorry, you have to select at least three items for your playlist!"
             );
         }
-
-        let { id } = playlist;
-        const { data } = await axios.post("/api/playlist/items", { id, items });
-        if (data.success) {
+        else {
             location.replace("/create-playlist#/finish");
         }
     };
 
     if (!playlist) {
-        return null;
+        return <Startcreator></Startcreator>
     }
 
     const handleAddMore = () => {
@@ -68,9 +88,21 @@ export default function Selectcreator() {
                     <span className="playlist-name">{playlist.title} 👇</span>
                 )}
             </h2>
+            {drafts &&
+
+            drafts.map((item) => {
+                console.log("Logging the drafted item", item)
+                return (<Selector item={item} key={item.id}></Selector>)
+
+            })}
+
+            
+            <div>
             <Selector key="1"></Selector>
             <Selector key="2"></Selector>
             <Selector key="3"></Selector>
+            </div>
+            
             {children}
             {error && <p className="error">{error}</p>}
             <div className="button-wrapper">

@@ -134,3 +134,19 @@ module.exports.queryPostItemDraft = function (type, title, id, image, url, year,
     const params = [type, title, id, image, url, year, author];
     return db.query(query, params);
 };
+
+
+module.exports.queryDeleteSingleItem = function (id) {
+    const query = `DELETE FROM items
+    WHERE id = $1;`;
+    const params = [id];
+    return db.query(query, params);
+};
+
+
+module.exports.queryGetItems = function (id) {
+    const query = `SELECT * FROM items
+    WHERE mixtape_id = $1 AND draft = true;`;
+    const params = [id];
+    return db.query(query, params);
+};
