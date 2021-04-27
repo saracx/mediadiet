@@ -65,6 +65,11 @@ export default function Login() {
             <div className="registration-links">
                 <Link to="/password/reset">Reset Password</Link>
                 <Link to="/">Click to go to Registration</Link>
+                <a href="/twitter/authorize">Log in with Twitter (authorize)</a>
+                <a href="/twitter/authenticate">
+                    Log in with Twitter (authorize)
+                </a>
+                or Log in with Twitter (authenticate)
             </div>
         </div>
     );

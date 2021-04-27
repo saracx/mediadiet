@@ -27,6 +27,7 @@ const mixtapeRouter = require("./routes/mixtape");
 // const imageRouter = require("./routes/images.js");
 // const libraryRouter = require("./routes/library.js");
 const spotifyRouter = require("./routes/spotifyrequest");
+const twitterAuth = require("./routes/twitter");
 
 // ===== MIDDLEWARE ==== //
 app.use(compression());
@@ -72,6 +73,7 @@ app.use("/api/user", userRouter);
 app.use("/api/playlist", playlistRouter); // generates the playlist, has to be renamed; renders playlist titles
 app.use("/api/mixtape", mixtapeRouter);
 app.use("/getToken", spotifyRouter); //
+app.use("/twitter", twitterAuth); //
 // app.use("/relationship", relationRouter);
 // app.use("/images", imageRouter);
 // app.use("/library", libraryRouter);

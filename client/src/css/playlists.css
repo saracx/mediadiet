@@ -210,7 +210,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
+    border-bottom: 1px solid var(--color2);
     margin: 0.6rem auto;
     padding: 0;
 }
@@ -227,8 +227,10 @@ li {
 h4 {
     width: 100%;
     padding: 0.1rem 0.5rem;
-    background-color: var(--color2);
     color: var(--color3);
+    font-family: var(--handwriting2);
+    font-size: 1.4rem;
+    letter-spacing: 0.2rem;
 }
 
 .item-meta {
@@ -244,7 +246,6 @@ h4 {
 .item-info {
     min-height: 120px;
     width: 100%;
-
     padding: 1rem;
     margin: 0;
 }
@@ -307,20 +308,20 @@ p.mixtape-title2 {
     transition: 0.5s;
 }
 
-p.mixtape-title2:hover {
+/* p.mixtape-title2:hover {
     background: white;
     transition: 0.5s;
-}
+} */
 
 p.mixtape-title2 a {
     color: white;
     font-weight: 300;
     font-size: 0.6rem;
 }
-
+/* 
 p.mixtape-title2 a:hover {
     color: var(--highlight-color);
-}
+} */
 
 .mixtape1 > p.mixtape-title2 {
     transform: rotate(1deg);
@@ -337,50 +338,32 @@ p.mixtape-title2 a:hover {
     transform: rotate(-3deg);
 }
 
-.mixtape1 > .name-sticker {
-    width: 50px;
+/* // Name sticker  */
+
+.name-sticker {
+    width: 80px;
     height: 20px;
     position: absolute;
-    background-color: var(--button-color);
     color: black;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
     padding: 0;
-    transform: rotate(-10deg);
+    font-size: 1.2rem;
+    font-family: var(--handwriting2);
 }
 
-.name-sticker > span {
-    padding: 0;
-    margin: 0;
-    font-size: 0.6rem;
-    font-family: var(--handwriting1);
+.mixtape1 > .name-sticker {
+    width: 80px;
+    height: 20px;
+    color: var(--color3);
+    transform: rotate(-10deg);
+    top: 14px;
+    left: 20px;
+    color: white;
+    letter-spacing: 0.2rem;
+    font-size: 1.3rem;
 }
 
 .mixtape2 > .name-sticker {
-    width: 50px;
-    height: 20px;
-    position: absolute;
-    background-color: var(--color1);
-    color: black;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    padding: 0;
-}
-
-.name-sticker {
-    width: 50px;
-    height: 20px;
-    position: absolute;
-    background-color: var(--color2);
-    color: black;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    padding: 0;
-    transform: rotate(-10deg);
+    font-family: var(--handwriting1);
+    bottom: 0px;
+    right: 0px;
 }

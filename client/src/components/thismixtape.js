@@ -1,17 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
-// import { cleanUpForPrinting } from "../utils";
 
 export default function ThisMixtape({ first }) {
-    console.log(first);
     const { id } = useParams();
-    console.log("params", id);
+
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState([]);
-
-    console.log("meta", meta);
 
     const [error, setError] = useState("");
 
@@ -19,7 +14,7 @@ export default function ThisMixtape({ first }) {
         (async () => {
             try {
                 const { data } = await axios.get("/api/mixtape/" + id);
-                console.log("data in ThisMixtape", data);
+                // console.log("data in ThisMixtape", data);
                 if (data.success) {
                     setItems(data.mixtape);
                     setMeta(data.meta.rows[0]);
@@ -40,16 +35,23 @@ export default function ThisMixtape({ first }) {
         <div id="my-playlists">
             <h2>
                 <span className="highlight">
-                    <b>Mixtape</b>: {meta.title} ({items.length})
+                    <b>Mixtape</b>:{" "}
+                    <span className="playlist-name">{meta.title}</span>
                 </span>
             </h2>
             <p className="description">by {meta.first}</p>
-            <p className="description">{meta.description}</p>
+            <br></br>
+            <p className="description">"{meta.description}"</p>
+            <p className="description">
+                published: &nbsp;
+                {meta.created_at}
+            </p>
 
             <div className="mixtape-view">
                 {items.map((item, i) => {
+                    i++;
                     return (
-                        <div key={item.i} className="item">
+                        <div key={i + item.id} className="item">
                             <img
                                 alt={item.title}
                                 className="small-image"
@@ -57,13 +59,9 @@ export default function ThisMixtape({ first }) {
                             ></img>
 
                             <div className="item-info">
-                                <a
-                                    href={item.url || cleanItem.url}
-                                    target="_blank"
-                                >
+                                <a href={item.url} target="_blank">
                                     <h4>
-                                        👉 {item.i}
-                                        {item.title}
+                                        {i}.{item.title}
                                     </h4>
                                 </a>
                                 <p className="item-meta">{item.year}</p>
