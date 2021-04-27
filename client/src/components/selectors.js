@@ -8,7 +8,7 @@ import { movieRequests } from "../requests/movies";
 import { bookRequests } from "../requests/books";
 import { spotifyRequest } from "../requests/spotify";
 
-export default function Selector({item}) {
+export default function Selector() {
     const noImage = "/no-results.png";
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
@@ -19,13 +19,13 @@ export default function Selector({item}) {
     const [selectedItem, setSelectedItem] = useState();
     const [garbage, setGarbage] = useState(false);
 
-    useEffect(() => {
-        if (item) {
-            setSelectedItem(item)
-        }
-    }, [item]);
+    // useEffect(() => {
+    //     if (item) {
+    //         setSelectedItem(item)
+    //     }
+    // }, []);
 
-    console.log(selectedItem)
+    // console.log(selectedItem)
 
    let mixtape_id = playlist.id;
 
@@ -130,7 +130,7 @@ export default function Selector({item}) {
                     <>
                         <img
                             className="preview-image"
-                            src={selectedItem.image}
+                            src={selectedItem.image || noImage}
                         ></img> 
                         
                     </>

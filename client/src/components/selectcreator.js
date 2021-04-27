@@ -24,26 +24,28 @@ export default function Selectcreator() {
     }, []);
 
 
-    useEffect(() => {
-        playlist &&
-            (async () => {
-                try {
-                    const { data } = await axios.get(
-                        "/api/playlist/items/" + playlist.id
-                    );
+            // DRAFT WORK //
 
-                    if (data.success && data.items) {
-                        setDraft(data.items)
-                        console.log("There should be nothing here", data.items)
+    // useEffect(() => {
+    //     playlist &&
+    //         (async () => {
+    //             try {
+    //                 const { data } = await axios.get(
+    //                     "/api/playlist/items/" + playlist.id
+    //                 );
 
-                    } else {
-                       console.log("Do nothing because there is no draft?")
-                    }
-                } catch (err) {
-                    console.log("There was an error at mixtapes", err);
-                }
-            })();
-    }, [items]);
+    //                 if (data.success && data.items) {
+    //                     setDraft(data.items)
+    //                     console.log("There should be nothing here", data.items)
+
+    //                 } else {
+    //                    console.log("Do nothing because there is no draft?")
+    //                 }
+    //             } catch (err) {
+    //                 console.log("There was an error at mixtapes", err);
+    //             }
+    //         })();
+    // }, [items]);
 
 
     // useEffect(() => {
@@ -88,20 +90,20 @@ export default function Selectcreator() {
                     <span className="playlist-name">{playlist.title} 👇</span>
                 )}
             </h2>
-            {drafts &&
+            {/* {drafts &&
 
             drafts.map((item) => {
                 console.log("Logging the drafted item", item)
                 return (<Selector item={item} key={item.id}></Selector>)
 
-            })}
+            })} */}
 
             
-            <div>
+            
             <Selector key="1"></Selector>
             <Selector key="2"></Selector>
             <Selector key="3"></Selector>
-            </div>
+          
             
             {children}
             {error && <p className="error">{error}</p>}
