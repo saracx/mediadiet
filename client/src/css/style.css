@@ -4,6 +4,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+
 }
 
 :root {
@@ -266,4 +267,9 @@ a.twitter:hover {
     animation: shakeX; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 1s; /* don't forget to set a duration! */
 
+}
+
+.imgbox {
+    width: 200px;
+    height: 200px;
 }

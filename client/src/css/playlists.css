@@ -440,3 +440,7 @@ p .twitter-share  {
     border: 1px solid #1b95e0;
 
 }
+
+.heart {
+    cursor: pointer;
+}

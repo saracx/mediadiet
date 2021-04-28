@@ -21,6 +21,7 @@ export default function (state = {}, action) {
             ...state,
             playlist: action.playlist,
             items: [],
+            mixtapeLiked: 0,
         };
     }
 
@@ -37,6 +38,23 @@ export default function (state = {}, action) {
         state = {
             ...state,
             items: state.items.filter((item) => item !== action.item),
+        };
+    }
+
+    if (action.type == "GET_LIKES") {
+        console.log("Arrived at get likes")
+        state = {
+            ...state,
+            likes: action.likes,
+        };
+    }
+
+
+    if (action.type == "ADD_LIKE") {
+        console.log("Adding Like at reducer")
+        state = {
+            ...state,
+            likes: state.likes + 1,
         };
     }
 

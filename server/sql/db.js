@@ -150,3 +150,17 @@ module.exports.queryGetItems = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+
+module.exports.addLike = function (mixtape_id, user_id) {
+    const query = `INSERT INTO likes (mixtape_id, user_id) VALUES ($1, $2) RETURNING *`;
+    const params = [mixtape_id, user_id];
+    return db.query(query, params);
+};
+
+
+module.exports.getLikes = function (mixtape_id) {
+    const query = `SELECT * FROM likes WHERE mixtape_id = $1`;
+    const params = [mixtape_id];
+    return db.query(query, params);
+};

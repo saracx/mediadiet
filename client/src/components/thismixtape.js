@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import axios from "../axios";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {addLikes, getLikes} from "../redux/actions"
 
 
 export default function ThisMixtape({ first }) {
     const { id } = useParams();
     const user = useSelector((state) => state && state.user);
+    const likes = useSelector((state) => state && state.likes);
     const windowUrl = window.location.href
+    const dispatch = useDispatch();
 
-    const [count, setCount] = useState();
+    // const [count, setCount] = useState();
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState([]);
 
@@ -20,6 +23,25 @@ export default function ThisMixtape({ first }) {
     window.open(url);
     return false;
  }
+
+    const handleClick = () => {
+        console.log("counted a click")
+
+        if (user) {
+            let user_id = user.id;
+
+            dispatch(addLikes(id, user_id))
+        }
+        // dispatch action & add to database
+        // log the like in database per user
+        
+    }
+
+  
+
+     useEffect(() => {
+        !likes && dispatch(getLikes(id));
+    }, [likes]);
 
 
     useEffect(() => {
@@ -64,7 +86,11 @@ export default function ThisMixtape({ first }) {
              
              
              <a className="twitter-share" onClick={() => shareOntwitter()}> Tweet </a>
-            {user ? <span>&nbsp;<span onClick={() => handleClick()}>❤️</span> {count && count}</span> : ""}
+            
+
+            {/* // Likes counter */}
+            
+            {user ? <span>&nbsp;<span className="heart animate__animated animate__bounce" onClick={() => handleClick()}>❤️</span> {likes && <p>{likes}</p>}</span> : ""}
              
 
             <div className="mixtape-view">

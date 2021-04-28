@@ -19,6 +19,7 @@ const welcome = require("./routes/welcome");
 const userRouter = require("./routes/user");
 const playlistRouter = require("./routes/playlist");
 const mixtapeRouter = require("./routes/mixtape");
+const likesRouter = require("./routes/likes");
 // const upload = require("./routes/upload");
 // const bio = require("./routes/bio");
 // const otherUser = require("./routes/getotherusers.js");
@@ -74,6 +75,10 @@ app.use("/api/playlist", playlistRouter); // generates the playlist, has to be r
 app.use("/api/mixtape", mixtapeRouter);
 app.use("/getToken", spotifyRouter); //
 app.use("/twitter", twitterAuth); //
+app.use("/api/likes", likesRouter); //
+
+
+//All mixtapes are open to view
 app.get("/mixtape/:id", (req, res) => {
     console.log("At mixtape")
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));

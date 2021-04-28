@@ -14,7 +14,6 @@ const {
 const { requireLoggedInUser } = require("../middleware/auth");
 
 const playlistDraft = async (req, res) => {
-    console.log("arrived at playlist draft");
     const { title, description } = req.body;
     const { userId } = req.session;
 
