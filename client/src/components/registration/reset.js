@@ -72,7 +72,8 @@ export default class ResetPass extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            // <React.Fragment>
+             <div id="signup-form">
                 <h2>Reset Password</h2>
                 {this.state.error && (
                     <p className="err">
@@ -91,7 +92,7 @@ export default class ResetPass extends Component {
                             onChange={(e) => this.logChange(e)}
                         ></input>
                         <button
-                            className="registration-button"
+                            className="signup-button"
                             onClick={(e) => this.logResetStart(e)}
                         >
                             Get Code
@@ -117,7 +118,7 @@ export default class ResetPass extends Component {
                             onChange={(e) => this.logChange(e)}
                         ></input>
                         <button
-                            className="registration-button"
+                            className="signup-button"
                             onClick={(e) => this.logResetVerify(e)}
                         >
                             Reset Password
@@ -127,18 +128,20 @@ export default class ResetPass extends Component {
 
                 {this.state.final && (
                     <>
-                        You successfully changed your password! Proceed to
-                        login:
-                        <Link className="link" to="/login">
+                        Success. Proceed to login:
+                        <Link className="registration-links" to="/login">
                             Login
                         </Link>
                     </>
                 )}
 
-                <Link className="link" to="/">
-                    Click to go to Registration
-                </Link>
-            </React.Fragment>
+                
+            <div className="registration-links">
+                
+                <Link to="/">Registration</Link>
+            </div>
+            {/* </React.Fragment> */}
+            </div>
         );
     }
 }

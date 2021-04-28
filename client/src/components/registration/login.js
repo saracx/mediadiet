@@ -63,8 +63,8 @@ export default function Login() {
             </button>
 
             <div className="registration-links">
-                <Link to="/password/reset">Reset Password</Link>
-                <Link to="/">Click to go to Registration</Link>
+                <Link to="/password/reset">Reset Password</Link><br></br>
+                <Link to="/">Registration</Link>
             </div>
         </div>
     );

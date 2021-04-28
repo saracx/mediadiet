@@ -9,7 +9,7 @@ export default function ThisMixtape({ first }) {
     const user = useSelector((state) => state && state.user);
     const windowUrl = window.location.href
 
-
+    const [count, setCount] = useState();
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState([]);
 
@@ -64,7 +64,7 @@ export default function ThisMixtape({ first }) {
              
              
              <a className="twitter-share" onClick={() => shareOntwitter()}> Tweet </a>
-
+            {user ? <span>&nbsp;<span onClick={() => handleClick()}>❤️</span> {count && count}</span> : ""}
              
 
             <div className="mixtape-view">

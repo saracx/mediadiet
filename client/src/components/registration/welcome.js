@@ -10,7 +10,7 @@ export default function Welcome() {
     return (
         <div id="registration">
             <HashRouter>
-                <h1>📼 Media Diet 💽</h1>
+                <h1>Media Diet 💽</h1>
                 <hr></hr>
                 <Route exact path="/" component={Signup} />
                 <Route path="/signup" component={Signup} />
@@ -18,9 +18,12 @@ export default function Welcome() {
                  <Route path="/password/reset" component={ResetPass} />
             </HashRouter>
 
+
             <div className="registration-links">
-                <a href="/twitter">Log in with Twitter</a>
+             <a className="twitter" href="/twitter">Log in with Twitter</a>
+
             </div>
+            
            
         </div>
     );
