@@ -105,42 +105,42 @@ export async function receiveFinalMixtapes(id) {
     }
 }
 
-export async function addLikes(mixtape_id, user_id) {
-    console.log("arrived at likes action")
-    try {
-        const { data } = await axios.post(`/api/likes/add/${mixtape_id}/${user_id}`);
-        console.log(data)
-        if (data.error) {
-            return {
-                type: "ERROR_MESSAGE",
-                error: data.error,
-            };
-        } else
-            return {
-                type: "ADD_LIKE",
-                mixtapeLiked: mixtape_id,
-            };
-    } catch (err) {
-        console.log("error in receiveFinalMixtapes action", err);
-    }
-}
+// export async function addLikes(mixtape_id, user_id) {
+//     console.log("arrived at likes action")
+//     try {
+//         const { data } = await axios.post(`/api/likes/add/${mixtape_id}/${user_id}`);
+//         console.log(data)
+//         if (data.error) {
+//             return {
+//                 type: "ERROR_MESSAGE",
+//                 error: data.error,
+//             };
+//         } else
+//             return {
+//                 type: "ADD_LIKE",
+//                 mixtapeLiked: mixtape_id,
+//             };
+//     } catch (err) {
+//         console.log("error in receiveFinalMixtapes action", err);
+//     }
+// }
 
-export async function getLikes(mixtape_id) {
-    console.log("getting likes at action")
-    try {
-        const { data } = await axios.get(`/api/likes/${mixtape_id}`);
-        console.log("data at getting likes", data)
-        if (data.error) {
-            return {
-                type: "ERROR_MESSAGE",
-                error: data.error,
-            };
-        } else
-            return {
-                type: "GET_LIKES",
-                likes: data.rows.length,
-            };
-    } catch (err) {
-        console.log("error in receiveFinalMixtapes action", err);
-    }
-}
+// export async function getLikes(mixtape_id) {
+    
+//     try {
+//         const { data } = await axios.get(`/api/likes/${mixtape_id}`);
+       
+//         if (data.error) {
+//             return {
+//                 type: "ERROR_MESSAGE",
+//                 error: data.error,
+//             };
+//         } else
+//             return {
+//                 type: "GET_LIKES",
+//                 likes: data.rows.length,
+//             };
+//     } catch (err) {
+//         console.log("error in receiveFinalMixtapes action", err);
+//     }
+// }

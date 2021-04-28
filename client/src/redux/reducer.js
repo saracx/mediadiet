@@ -34,29 +34,26 @@ export default function (state = {}, action) {
     }
 
     if (action.type == "DELETE_ITEM") {
-        console.log("Arrived at delete item, item was deleted")
         state = {
             ...state,
             items: state.items.filter((item) => item !== action.item),
         };
     }
 
-    if (action.type == "GET_LIKES") {
-        console.log("Arrived at get likes")
-        state = {
-            ...state,
-            likes: action.likes,
-        };
-    }
+    // if (action.type == "GET_LIKES") {
+    //     state = {
+    //         ...state,
+    //         likes: action.likes,
+    //     };
+    // }
 
 
-    if (action.type == "ADD_LIKE") {
-        console.log("Adding Like at reducer")
-        state = {
-            ...state,
-            likes: state.likes + 1,
-        };
-    }
+    // if (action.type == "ADD_LIKE") {
+    //     state = {
+    //         ...state,
+    //         likes: state.likes + 1,
+    //     };
+    // }
 
     return state;
 }

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    addLike, getLikes
+    addLike, getLikes, deleteLikes
 } = require("../sql/db");
 
 const { requireLoggedInUser } = require("../middleware/auth");
@@ -45,7 +45,26 @@ const getLikesForMixtape = async (req, res) => {
     }
 };
 
+const deleteLikeFromMixtape = async (req, res) => {
+    
+    const { mixtape_id, user_id} = req.params;
+    console.log("deleting like for mix", mixtape_id, user_id)
+    try {
+        const {rows} = await deleteLikes(mixtape_id, user_id);
+        res.json({
+            success: true,
+        });
+    } catch (err) {
+        console.log("Error at get /deleteLike", err);
+        return res.json({
+            error: "There was an error at deleteLike",
+        });
+    }
+};
+
 router.post("/add/:mixtape_id/:user_id", addLikeToMixtape);
 router.get("/:mixtape_id", getLikesForMixtape);
+router.post("/delete/:mixtape_id/:user_id", deleteLikeFromMixtape);
+
 
 module.exports = router;

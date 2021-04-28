@@ -164,3 +164,9 @@ module.exports.getLikes = function (mixtape_id) {
     const params = [mixtape_id];
     return db.query(query, params);
 };
+
+module.exports.deleteLikes = function (mixtape_id, user_id) {
+    const query = `DELETE FROM likes WHERE mixtape_id = $1 AND user_id = $2`;
+    const params = [mixtape_id, user_id];
+    return db.query(query, params);
+};
