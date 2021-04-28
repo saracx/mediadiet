@@ -18,7 +18,7 @@ export default function ThisMixtape() {
     const [meta, setMeta] = useState([]);
     const [likes, setLikes] = useState();
     const [alreadyLiked, setAlreadyLiked] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(false)
 
     const shareOntwitter = () => {
     var url = `https://twitter.com/intent/tweet?url=${windowUrl}&via=mediadiet&text=Check out this mixtape`;
@@ -26,17 +26,15 @@ export default function ThisMixtape() {
     return false;
  }
 
-    const handleClick = async () => {
-
-        if (user) {
+    const handleClick = async (registered) => {
+        if (user && registered) {
             let user_id = user.id;
-            // dispatch(addLikes(id, user_id))
             try {
                 const { data } = await axios.post(`/api/likes/add/${id}/${user_id}`);
-                console.log(data)
+                
                 if (alreadyLiked) {
                     // delete Item from db
-                    console.log("waiting for deletion")
+                 
                     const { data } = await axios.post(`/api/likes/delete/${id}/${user_id}`);
                     // subtract like
                     if (data.success) {
@@ -50,12 +48,13 @@ export default function ThisMixtape() {
          
             } catch (err) {
                 console.log("error in receiveFinalMixtapes action", err);
-             }
-
+            
             }
-        // dispatch action & add to database
-        // log the like in database per user
-        
+        }
+
+        else {
+            setError("Please sign up to vote")
+        }
     }
 
   
@@ -73,26 +72,23 @@ export default function ThisMixtape() {
                     setItems(data.mixtape);
                     setMeta(data.meta.rows[0]);
                     setLikes(count)
-                    console.log("likes", likes)
-                    console.log("likes", likes.data.rows)
+                   
                 } 
 
                 if (user) {
                     let allLikesOnThisMixtape = likes.data.rows;
                     allLikesOnThisMixtape.map((item) => {
                         if (item.user_id === user.id) {
-                            console.log("am i ever in this block")
+                            
                             return setAlreadyLiked(true)
                         }
                         else setAlreadyLiked(false)
                     })
                 }
                 
-                else {
-                    setError("Sorry, something went wrong!");
-                }
             } catch (err) {
                 console.log("There was an error at single mixtape view", err);
+                setError("Something went wrong")
             }
         })();
     }, [likes]);
@@ -128,7 +124,7 @@ export default function ThisMixtape() {
             
             {user ? <span>&nbsp;<span className="heart animate__animated animate__bounce" onClick={() => handleClick(true)}>❤️</span> {likes && <span className="likes">{likes}</span>}</span> : <span>&nbsp;<span className="heart animate__animated animate__bounce" onClick={() => handleClick(false)}>❤️</span> {likes && <span className="likes">{likes}</span>}</span>}
 
-            {error && <p>"Please sign up to vote on this playlist!</p>}
+            {error && <span className="error">{error}</span>}
              
 
             <div className="mixtape-view">
