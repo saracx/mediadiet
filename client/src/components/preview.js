@@ -16,7 +16,7 @@ export default function Preview() {
     const playlist = useSelector((state) => state && state.playlist);
     const items = useSelector((state) => state && state.items);
 
-    console.log("items in state", items);
+
 
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());
@@ -29,7 +29,7 @@ export default function Preview() {
             
             try {
                 const { data } = await axios.get("/api/mixtape/" + playlist.id);
-                console.log("data", data.mixtape)
+       
                 let itemArray = data.mixtape;
                 if (data.success) {
                     itemArray.map((item) => {
@@ -44,14 +44,14 @@ export default function Preview() {
             }
 
         })();
-    }}, [items, playlist]);
+    }}, [items]);
 
     if (!playlist) {
         location.replace("/create-playlist")
     }
 
     const handleDeleteItem = (item) => {
-
+        console.log("item in preview", item)
         // global store will delete item from db
         dispatch(deleteItem(item))
     };
@@ -75,7 +75,7 @@ export default function Preview() {
                 <div className="single-items">
                     {items &&
                         items.map((item, i) => {
-                            console.log(item)
+                            
                           
                                 return (
                                     <section  key={item.id + i} className="section-wrapper">

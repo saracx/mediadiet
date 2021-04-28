@@ -12,6 +12,7 @@ export default function Selector() {
     const noImage = "/no-results.png";
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state && state.playlist);
+    const items = useSelector((state) => state && state.items);
     const [option, setOption] = useState("");
     const [error, setError] = useState({});
     const [query, setQuery] = useState("");
@@ -69,12 +70,13 @@ export default function Selector() {
         // clean up selected item object before sending it to local and global state
         let cleanedItem = cleanUp(item);
         // console.log("cleaned Item", cleanedItem);
-        dispatch(addNewItem(cleanedItem)); 
+        
 
         // send the item to store (so we can get it back later for drafts)
         const { data } = await axios.post("/api/playlist/itemDraft", { mixtape_id, cleanedItem });
-    
+      
         setSelectedItem(data.item)
+        dispatch(addNewItem(data.item)); 
         setQuery(null); // close results window
         setGarbage(true);
         setOption("");
@@ -85,7 +87,7 @@ export default function Selector() {
     // then pass the items as props to the selectors by mapping over them and creating a selector for each item
 
     const handleDeleteItem = () => {
-        console.log("selected Item?", selectedItem)
+        
         setQuery(null);
         setGarbage(false);
 

@@ -71,7 +71,9 @@ export async function addNewItem(item) {
 
 
 export async function deleteItem(item) {
-    let {id} = item
+            console.log("item in action", item, item.id)
+
+    let {id} = item;
 
     try {
         const { data } = await axios.post("/api/playlist/deleteItem/" + id);
