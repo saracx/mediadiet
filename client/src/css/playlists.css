@@ -343,25 +343,30 @@ p.mixtape-title2 a:hover {
 /* // Name sticker  */
 
 .name-sticker {
-    width: 80px;
+    width: auto;
     height: 20px;
     position: absolute;
     color: black;
     padding: 0;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-family: var(--handwriting2);
 }
 
 .mixtape1 > .name-sticker {
-    width: 80px;
-    height: 20px;
+    width: 300px;
     color: var(--color3);
-    transform: rotate(-10deg);
-    top: 14px;
-    left: 20px;
-    color: white;
+    border-bottom-right-radius: 0px;
+    color: transparent;
     letter-spacing: 0.2rem;
-    font-size: 1.3rem;
+    font-size: 0.9rem;
+    top: -10px;
+    
+}
+
+.mixtape1 > .name-sticker > span {
+    top: 0px;
+    padding: 0 0.4rem;
+    color: black;
 }
 
 .mixtape2 > .name-sticker {
