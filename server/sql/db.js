@@ -83,10 +83,10 @@ module.exports.getLastMixtapeDraft = function (id) {
     return db.query(query, params);
 };
 
-module.exports.addItems = function (type, title, id, image, url, year, author) {
+module.exports.addItems = function (type, title, description, id, image, url, year, author) {
     const query = `INSERT INTO items
-    (type, title, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
-    const params = [type, title, id, image, url, year, author];
+    (type, title, description, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;`;
+    const params = [type, title, description, id, image, url, year, author];
     return db.query(query, params);
 };
 
@@ -97,7 +97,7 @@ module.exports.getThisPlaylist = function (id) {
 };
 
 module.exports.getAllUserMixtapes = function () {
-    const query = `SELECT mixtapes.id AS mixtape_id, title, description, mixtapes.created_at, users.first AS name FROM mixtapes JOIN users ON mixtapes.user_id = users.id WHERE mixtapes.draft = false`;
+    const query = `SELECT mixtapes.id AS mixtape_id, title, description, mixtapes.created_at, users.first AS name FROM mixtapes JOIN users ON mixtapes.user_id = users.id WHERE mixtapes.draft = false ORDER BY mixtapes.id DESC`;
     return db.query(query);
 };
 
@@ -128,10 +128,10 @@ module.exports.getAllMixtapesForThisUser = function (id) {
 };
 
 
-module.exports.queryPostItemDraft = function (type, title, id, image, url, year, author) {
+module.exports.queryPostItemDraft = function (type, title, description, id, image, url, year, author) {
     const query = `INSERT INTO items
-    (type, title, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
-    const params = [type, title, id, image, url, year, author];
+    (type, title, description, mixtape_id, image, url, year, author) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;`;
+    const params = [type, title, description, id, image, url, year, author];
     return db.query(query, params);
 };
 

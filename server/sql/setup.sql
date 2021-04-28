@@ -49,6 +49,7 @@ CREATE TABLE items(
     image VARCHAR,
     url VARCHAR,
     year VARCHAR,
+    author VARCHAR,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

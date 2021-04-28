@@ -17,7 +17,6 @@ export default function Startcreator() {
     const playlist = useSelector((state) => state && state.playlist);
     const items = useSelector((state) => state && state.items);
 
-    console.log("items in startcreator", items)
 
     const [input, setInput] = useState();
     const [error, setError] = useState(false);

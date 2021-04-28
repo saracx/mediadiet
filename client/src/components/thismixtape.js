@@ -73,6 +73,7 @@ export default function ThisMixtape() {
             
                 if (data.success) {
                     setItems(data.mixtape);
+                
                     setMeta(data.meta.rows[0]);
                     setLikes(count)
                 } 
@@ -135,6 +136,7 @@ export default function ThisMixtape() {
 
             <div className="mixtape-view">
                 {items.map((item, i) => {
+                    
                     i++;
                     if (item.type == "movie") {
                         Object.assign(item, {icon: "🎬"});
@@ -155,7 +157,9 @@ export default function ThisMixtape() {
                                         {i}.{item.title}
                                     </h4>
                                 </a>
-                                <p className="item-meta">{item.year}</p>
+                                {item.description && <p className="item-meta">{item.description} </p>}
+                                <p className="item-meta">{item.year} </p>
+                                {item.author && <p className="item-meta">{item.author} </p>}
                                 <p className="item-meta">{item.icon || item.type} </p> 
                             </div>
                         </div>

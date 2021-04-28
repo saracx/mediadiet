@@ -1,6 +1,7 @@
 export function cleanUp(item) {
     if (item.printType) {
         const { Title, authors, Poster, infoLink, publishedDate } = item;
+        console.log("book in util", item)
         let cleanedUpItem = {
             type: "book",
             title: Title,
@@ -8,12 +9,15 @@ export function cleanUp(item) {
             image: Poster.smallThumbnail,
             url: infoLink,
             year: publishedDate,
+            description: item.description,
+            subtitle: item.subtitle
         };
         return cleanedUpItem;
     }
 
     if (item.imdbID) {
         const { Title, Year, imdbID, Poster } = item;
+        console.log("movie in util", item)
 
         let cleanedUpItem = {
             type: "movie",
@@ -21,12 +25,16 @@ export function cleanUp(item) {
             url: "http://www.imdb.com/title/" + imdbID,
             year: Year,
             image: Poster,
+            description: null,
+            subtitle: null,
+            author: null,
         };
         return cleanedUpItem;
     }
 
     if (item.artist) {
-        let cleanedUpItem = { ...item, image: item.Poster, title: item.Title };
+        console.log("song in util", item)
+        let cleanedUpItem = { ...item, image: item.Poster, title: item.Title, author: item.artist.name, subtitle: null, description: null };
         return cleanedUpItem;
     }
 }

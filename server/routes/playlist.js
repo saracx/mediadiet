@@ -58,9 +58,11 @@ const postItems = async (req, res) => {
     console.log("id and items on server", id, items);
 
     items.forEach((item) => {
+        console.log("item on server", item)
         addItems(
             item.type,
             item.title,
+            item.description,
             id,
             item.image,
             item.url,
@@ -120,9 +122,9 @@ const getFinalMixtapes = async (req, res) => {
 const postItemDraft = async (req, res) => {
     const { mixtape_id, cleanedItem } = req.body;
     console.log("playlist id and item on server", mixtape_id, cleanedItem);
-    let {type, title, image, url, year, author } = cleanedItem;
+    let {type, title, description, image, url, year, author } = cleanedItem;
 
-    const {rows} = await queryPostItemDraft(type, title, mixtape_id, image, url, year, author)
+    const {rows} = await queryPostItemDraft(type, title, description, mixtape_id, image, url, year, author)
 
     // Insert into db with DRAFT = TRUE
     // return item id
