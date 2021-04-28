@@ -41,6 +41,9 @@ export async function addPlaylist(input) {
 }
 
 export async function receivePlaylist() {
+
+    // This will get the draft of the last mixtape this user made!
+
     try {
         const { data } = await axios.get("/api/playlist");
 
@@ -65,6 +68,7 @@ export async function addNewItem(item) {
         items: item,
     };
 }
+
 
 export async function deleteItem(item) {
     let {id} = item

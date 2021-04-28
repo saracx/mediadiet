@@ -10,6 +10,7 @@ const {
     queryPostItemDraft,
     queryDeleteSingleItem,
     queryGetItems,
+    deleteThisPlaylist
 } = require("../sql/db");
 const { requireLoggedInUser } = require("../middleware/auth");
 
@@ -148,6 +149,15 @@ const getItems = async (req, res) => {
     res.json({ success: true, items: rows });
 };
 
+const deletePlaylist = async (req, res) => {
+    // gets items when they are in draft mode!
+    const { id } = req.params;
+    console.log("Arrived at delete this playlist")
+    const {rows} = await deleteThisPlaylist(id);
+    console.log("success!", rows)
+    res.json({ success: true });
+};
+
 
 router.get("/:id", requireLoggedInUser, getFinalMixtapes);
 router.post("/", requireLoggedInUser, playlistDraft);
@@ -157,5 +167,6 @@ router.get("/items/:id", requireLoggedInUser, getItems);
 router.post("/itemDraft", requireLoggedInUser, postItemDraft);
 router.post("/publish/:id", requireLoggedInUser, publishMixtape);
 router.post("/deleteItem/:id", requireLoggedInUser, deleteSingleItem);
+router.post("/delete/:id", requireLoggedInUser, deletePlaylist);
 
 module.exports = router;

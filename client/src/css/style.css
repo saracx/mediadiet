@@ -162,7 +162,7 @@ body {
 }
 
 .highlight {
-    color: var(--main-text-color);
+    color: var(--highlight-color);
 }
 
 .intro {
@@ -309,4 +309,8 @@ a.twitter:hover {
 
 .cursor {
     cursor: pointer;
+}
+
+.italic {
+    font-style: italic;
 }

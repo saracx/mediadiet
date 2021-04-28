@@ -6,6 +6,8 @@ import { receivePlaylist } from "../redux/actions";
 import { Link } from "react-router-dom";
 import Selector from "./selectors";
 import axios from "../axios";
+import {addNewItem, deleteItem} from "../redux/actions"
+import DeletePlaylist from "./delete";
 
 export default function Preview() {
     const noImage = "/no-results.png";
@@ -14,50 +16,81 @@ export default function Preview() {
     const playlist = useSelector((state) => state && state.playlist);
     const items = useSelector((state) => state && state.items);
 
-    console.log(items);
+    console.log("items in state", items);
 
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());
     }, []);
 
+
+    useEffect(() => {
+         if (playlist.id && items.length == 0){
+        (async () => {
+            
+            try {
+                const { data } = await axios.get("/api/mixtape/" + playlist.id);
+                console.log("data", data.mixtape)
+                let itemArray = data.mixtape;
+                if (data.success) {
+                    itemArray.map((item) => {
+                        dispatch(addNewItem(item))
+                    })
+
+                }
+            }
+
+            catch (err) {
+                console.log(err)
+            }
+
+        })();
+    }}, [items, playlist]);
+
     if (!playlist) {
-        return null;
+        location.replace("/create-playlist")
     }
+
+    const handleDeleteItem = (item) => {
+
+        // global store will delete item from db
+        dispatch(deleteItem(item))
+    };
 
     return (
         <div className="preview-wrapper">
-            {items && (
+            {items && playlist && (
+                <>
                 <h2>
                     Your mixtape: &nbsp;{" "}
                     <span className="highlight">
                         <span className="playlist-name">{playlist.title}</span>
                     </span>
-                </h2>
+                   
+                </h2> <p className="description">"{playlist.description}"</p>
+                
+                
+                </>
             )}
             <div className="preview">
                 <div className="single-items">
                     {items &&
                         items.map((item, i) => {
-                            if (item.image.smallThumbnail) {
+                            console.log(item)
+                          
                                 return (
-                                    <img
-                                        className="final-playlist-view"
-                                        key={i}
+                                    <section  key={item.id + i} className="section-wrapper">
+                                    <img className="final-playlist-view"
+                                        
                                         src={
-                                            item.image.smallThumbnail || noImage
+                                            item.image || noImage
                                         }
                                     ></img>
+                                    <div className="garbage" onClick={() => handleDeleteItem(item)}>🚮</div>
+                                    </section>
                                 );
-                            } else {
-                                return (
-                                    <img
-                                        className="final-playlist-view"
-                                        key={i}
-                                        src={item.image || noImage}
-                                    ></img>
-                                );
-                            }
-                        })}
+                        }
+                        )
+                    }
                 </div>
             </div>
         </div>

@@ -170,3 +170,9 @@ module.exports.deleteLikes = function (mixtape_id, user_id) {
     const params = [mixtape_id, user_id];
     return db.query(query, params);
 };
+
+module.exports.deleteThisPlaylist = function (mixtape_id) {
+    const query = `DELETE FROM mixtapes WHERE id = $1`;
+    const params = [mixtape_id];
+    return db.query(query, params);
+};

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Selector from "./selectors";
 import axios from "../axios";
 import Preview from "./preview";
+import Publish from "./publish"
 
 export default function Finishcreator() {
     const playlist = useSelector((state) => state && state.playlist);
@@ -18,25 +19,6 @@ export default function Finishcreator() {
         !playlist && dispatch(receivePlaylist());
     }, []);
 
-    const handleClick = async (e) => {
-        if (playlist) {
-            let id = playlist.id;
-            // e.preventDefault(e);
-            try {
-                const { data } = await axios.post("api/playlist/publish/" + id);
-
-                if (data.success) {
-                    return location.replace("/my-mixtapes");
-                } else {
-                    setError("Sorry, something went wrong here!");
-                }
-            } catch (err) {
-                console.log("Error in publish playlist");
-            }
-        } else {
-            setError("Sorry, we couldn't publish this playlist");
-        }
-    };
 
     if (!playlist) {
         return null;
@@ -50,8 +32,7 @@ export default function Finishcreator() {
     return (
         <section id="finish">
             <Preview></Preview>
-            <button onClick={(e) => handleClick(e)}>👉 Publish</button>
-            {error && <p className="error">{error}</p>}
+            <Publish id={playlist.id}></Publish>
         </section>
     );
 }

@@ -17,7 +17,7 @@ export default function Selectcreator() {
     const items = useSelector((state) => state && state.items);
     let [children, setChildren] = useState([]);
     let [displayButton, setDisplayButton] = useState(true);
-    let [drafts, setDraft] = useState();
+    // let [drafts, setDraft] = useState();
 
     useEffect(() => {
         !playlist && dispatch(receivePlaylist());

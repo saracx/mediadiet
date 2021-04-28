@@ -71,7 +71,8 @@ export default function Selector() {
         // console.log("cleaned Item", cleanedItem);
         dispatch(addNewItem(cleanedItem)); 
 
-         const { data } = await axios.post("/api/playlist/itemDraft", { mixtape_id, cleanedItem });
+        // send the item to store (so we can get it back later for drafts)
+        const { data } = await axios.post("/api/playlist/itemDraft", { mixtape_id, cleanedItem });
     
         setSelectedItem(data.item)
         setQuery(null); // close results window
@@ -87,6 +88,8 @@ export default function Selector() {
         console.log("selected Item?", selectedItem)
         setQuery(null);
         setGarbage(false);
+
+        // global store will delete item from db
         dispatch(deleteItem(selectedItem)).then(() => {
             setSelectedItem(null);
             setOption(true);

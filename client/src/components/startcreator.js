@@ -4,14 +4,46 @@ import { useDispatch, useSelector } from "react-redux";
 import "../css/playlists.css";
 import { addPlaylist } from "../redux/actions";
 import { Link } from "react-router-dom";
+import {receivePlaylist} from "../redux/actions"
 import User from "./user"
+import Preview from "./preview"
+import Selector from "./selectors"
+import Publish from "./publish"
+import DeletePlaylist from "./delete"
 
 export default function Startcreator() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state && state.user);
+    const playlist = useSelector((state) => state && state.playlist);
+    const items = useSelector((state) => state && state.items);
+
+    console.log("items in startcreator", items)
 
     const [input, setInput] = useState();
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+        !playlist && dispatch(receivePlaylist());
+    }, []);
+
+    // useEffect(() => {
+    //     playlist && 
+    //     (async () => {
+            
+    //         try {
+    //             // This checks if there are any drafts
+    //             const { data } = await axios.get("/api/mixtape/" + playlist.id);
+    //             console.log("data", data.mixtape)
+    //         }
+
+    //         catch (err) {
+    //             console.log(err)
+    //         }
+
+    //     })();
+    // }, [playlist]);
+
+
 
     const handleChange = (e) => {
         // e.preventDefault();
@@ -39,6 +71,7 @@ export default function Startcreator() {
         }
     };
 
+    if (!playlist) {
     return (
         <section id="intro">
         
@@ -82,4 +115,17 @@ export default function Startcreator() {
             </section>
         </section>
     );
+
+    }
+
+    if (playlist) {
+
+       return (<div id="intro"><span className="italic">Do you wish to continue working on your last mixtape?</span> 
+       
+       <Preview></Preview>
+       <Selector></Selector>
+       <DeletePlaylist id={playlist.id}></DeletePlaylist><Publish id={playlist.id}></Publish>
+       </div>
+)
+    }
 }
