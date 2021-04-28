@@ -1,40 +1,45 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {addLikes, getLikes} from "../redux/actions"
+import {useParams } from "react-router-dom";
+import {  useSelector } from "react-redux";
+import AllMixtapes from "./allmixtapes"
 
 
 export default function ThisMixtape() {
-    const { id } = useParams();
-    const user = useSelector((state) => state && state.user);
-    // const likes = useSelector((state) => state && state.likes);
-    // const playlist = useSelector((state) => state && state.playlist);
-    const windowUrl = window.location.href
-    const dispatch = useDispatch();
 
-    // const [count, setCount] = useState();
+    // mixtape id is in the params of the url
+    const { id } = useParams();
+
+    // Get the user from global state
+    const user = useSelector((state) => state && state.user);
+
+    // items and meta are only received once as the playlist loads
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState([]);
+
+    // likes are received whenever likes are handled
     const [likes, setLikes] = useState();
     const [alreadyLiked, setAlreadyLiked] = useState(false);
     const [error, setError] = useState(false)
 
+    // Tweet the location of the url
+    const windowUrl = window.location.href
     const shareOntwitter = () => {
     var url = `https://twitter.com/intent/tweet?url=${windowUrl}&via=mediadiet&text=Check out this mixtape`;
     window.open(url);
     return false;
- }
+    }
 
+    // Handles click on the heart button
     const handleClick = async (registered) => {
+        // if the user is registered and set in global scope, the click is either counted as like or as deletion of a prior like
+
         if (user && registered) {
             let user_id = user.id;
             try {
                 const { data } = await axios.post(`/api/likes/add/${id}/${user_id}`);
-                
                 if (alreadyLiked) {
                     // delete Item from db
-                 
                     const { data } = await axios.post(`/api/likes/delete/${id}/${user_id}`);
                     // subtract like
                     if (data.success) {
@@ -42,16 +47,15 @@ export default function ThisMixtape() {
                         setAlreadyLiked(false)
                     }
                 }
+
                 if (data.success & !alreadyLiked) {
                     setLikes(likes+1)
                 }
-         
+
             } catch (err) {
                 console.log("error in receiveFinalMixtapes action", err);
-            
             }
         }
-
         else {
             setError("Please sign up to vote")
         }
@@ -63,7 +67,6 @@ export default function ThisMixtape() {
         
         (async () => {
             try {
-                
                 const { data } = await axios.get("/api/mixtape/" + id);
                 const likes = await axios.get(`/api/likes/` + id);
                 let count = likes.data.rows.length;
@@ -72,7 +75,6 @@ export default function ThisMixtape() {
                     setItems(data.mixtape);
                     setMeta(data.meta.rows[0]);
                     setLikes(count)
-                   
                 } 
 
                 if (user) {
@@ -91,11 +93,15 @@ export default function ThisMixtape() {
                 setError("Something went wrong")
             }
         })();
+        // will update anytime "likes" is changed
     }, [likes]);
 
 
     if (!items || !meta) {
-        return <h2>There is no mixtape with this id! </h2>;
+        return <React.Fragment>
+        <span className="error">There is no mixtape with this id! Here are all recently published mixtapes:</span>
+        <AllMixtapes></AllMixtapes>
+        </React.Fragment>;
     }
 
     return (

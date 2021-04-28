@@ -68,8 +68,8 @@ a:focus {
 .error {
     color: var(--error-color);
     font-size: var(--small);
-    margin: 1rem;
-    padding: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
 
     width: 100%;
 }
@@ -272,4 +272,41 @@ a.twitter:hover {
 .imgbox {
     width: 200px;
     height: 200px;
+}
+
+#imprint {
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    margin: 0 auto;
+    /* justify-content: center ; */
+}
+
+.sarawashere {
+    width: auto;
+    height: 95%;
+    object-fit: cover;
+}
+
+.imprint {
+    position: absolute;
+    z-index:2500;
+    font-size: 0.7rem;
+    bottom: 2%;
+    left: 2%;
+    font-family: var(--meta-font)
+}
+
+.imprint a {
+    color: var(--highlight-color);
+    font-size: 0.7rem;
+}
+
+.cursor {
+    cursor: pointer;
 }

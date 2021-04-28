@@ -1,6 +1,8 @@
 import "../css/nav.css";
 import Logout from "../components/logout";
 import { Link } from "react-router-dom";
+import SaraWasHere from "./sarawashere"
+
 
 
 export default function Navigation({user}) {
@@ -11,9 +13,8 @@ export default function Navigation({user}) {
         <br></br>
             <ul>
             <li><a href="/">😻</a></li>
-            
+            <li><Link to="/imprint"> ？</Link></li>
             </ul>
-           
         </section>
     );
     }
@@ -37,6 +38,7 @@ export default function Navigation({user}) {
                         💽
                     </Link>{" "}
                 </li>
+                 <li><Link to="/imprint"> ？</Link></li>
             </ul>
             <Logout></Logout>
         </section>

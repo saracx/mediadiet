@@ -10,7 +10,7 @@ export default function AllMixtapes({ title }) {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        user &&
+        
             (async () => {
                 try {
                     const { data } = await axios.get("/api/mixtape/all");
@@ -21,7 +21,7 @@ export default function AllMixtapes({ title }) {
                     console.log("There was an error at mixtapes", err);
                 }
             })();
-    }, [user]);
+    }, []);
 
     if (!allMixtapes && user) {
         return (

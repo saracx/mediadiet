@@ -5,7 +5,7 @@ import User from "./user";
 export default function Landingscreen() {
     const user = useSelector((state) => state && state.user);
     let title = "Check out some recently published mixtapes:";
-    console.log(user);
+    
 
     return (
         <div id="welcome-screen"> {user &&

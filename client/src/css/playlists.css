@@ -445,4 +445,11 @@ p .twitter-share  {
 
 .heart {
     cursor: pointer;
+   
+}
+
+.heart:hover {
+    transition: 1s;
+    animation: bounce;
+    animation-duration: 2s;
 }
