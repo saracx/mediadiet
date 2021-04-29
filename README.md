@@ -2,6 +2,10 @@
 
 Media Diet is a mixed media mixtape generator. After registration, users can create themed mixtapes (consisting of books, music and movies) and share them with friends. The project was made as final graduation demo for Spiced Academy Bootcamp, and is built on React with Redux and Node with Express.
 
+
+
+Live demo on http://mediadiet.herokuapp.com
+
 # Features
 
 - Auto-generate title, description, images and links for user mixtapes
